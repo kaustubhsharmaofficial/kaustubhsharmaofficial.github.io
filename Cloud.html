@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JavaScript Quiz</title>
+<title>AWS Developer Quiz</title>
 <style>
 body {
 background-color: white;
@@ -18,15 +18,6 @@ background-color: white;
 border-radius: 10px;
 }
 
-#header {
-margin-top: 0;
-border: 2px solid black;
-padding: 5px;
-height: 250px;
-background: beige;
-background-image: url("code.jpg");
-color: white;
-}
 
 label {
 display: block;
@@ -47,11 +38,31 @@ width: 100px;
 margin-top: 20px;
 }
 
+#header {
+  background-color: #f1f1f1; /* Grey background */
+  
+  color: black;
+  text-align: center; /* Centered text */
+  font-size: 50px; /* Big font size */
+  font-weight: bold;
+  position: fixed; /* Fixed position - sit on top of the page */
+  top: 0;
+  width: 100%; /* Full width */
+  transition: 0.2s; /* Add a transition effect (when scrolling - and font size is decreased) */
+}
+
 </style>
 
-
+  <!--Dark Mode CSS File-->
+  <link href="CSS/darkmode.css" rel="stylesheet">
 </head>
 <body>
+    <!--For Dark Mode In Body Section-->
+<div class="mode">
+<div id="header">AWS Developer Questions
+    
+</div>
+
 <div id="main">
     
 <form id="form1">
@@ -86,8 +97,11 @@ margin-top: 20px;
     
 <p>Your grade is: <span id="grade">__</span></p>
 <p id="grade2"></p>
-
-
+</div>
+<button class="mode" > 
+    Dark mode:			 
+    <span class="change">OFF</span> 
+  </button>
 
 <script>
 document.getElementById("form1").onsubmit=function() {
@@ -121,9 +135,28 @@ document.getElementById("grade2").innerHTML = result2;
 return false; // required to not refresh the page; just leave this here
 } //this ends the submit function
 
+// When the user scrolls down 20px from the top of the document, resize the header's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("header").style.fontSize = "30px";
+  } else {
+    document.getElementById("header").style.fontSize = "50px";
+  }
+}
+
+
 </script>
-
-
+<!--Dark Mode JS File-->
+<script src="JS/darkmode.js">
+  
+</script>
+<script>// Try using right-click on the preview page. This script disables that functionality.
+    window.addEventListener('contextmenu', function (e) {
+      
+      e.preventDefault();
+    }, false);</script>
 </div>
 </body>
 </html>
