@@ -1,6 +1,10 @@
 @media only screen and (max-width: 950px){
     .left-nav{
         flex-direction: column;
+        
+    }
+    *:focus{
+        outline: 0 !important;
     }
     .navbar{
         flex-direction: column;
@@ -17,15 +21,17 @@
         flex-direction: column-reverse;
         max-width: 100%;
     }
-  
+
     .burger{
-        display: block;
+        display:block;
     }
+    
     .navHeight-res{
         height: 72px;
     }
     .visibileClass-res{
-        opacity: 0  ;
+        visibility: hidden;
+        
     }
     .section{
         flex-direction: column-reverse;

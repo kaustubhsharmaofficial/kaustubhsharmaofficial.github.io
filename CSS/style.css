@@ -16,7 +16,8 @@ html{
     /*To Make header Sticky*/
     position: sticky;
     top: 0;
-    cursor: pointer;
+    /* Causes bule blinkwhen clicked  */
+    /* cursor: pointer; */
     
 }
 
