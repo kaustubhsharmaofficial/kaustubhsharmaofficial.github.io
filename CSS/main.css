@@ -1,17 +1,30 @@
+<<<<<<< HEAD
 
+=======
+body {
+    font-family: monospace;
+}
+>>>>>>> 68f9dc90276c05cf310746dd1fa5b4ed8171508f
 
 ul {
     font-family: helvetica;
 }
 li {
     list-style: circle;
+<<<<<<< HEAD
 }
 .list {
+=======
+  }
+  
+  .list {
+>>>>>>> 68f9dc90276c05cf310746dd1fa5b4ed8171508f
     list-style: square;
   }
   
   #msg {
     font-family: monospace;
+<<<<<<< HEAD
   }
   .light-theme {
     color: #000000;
@@ -55,3 +68,6 @@ li {
     background-color: var(--btnBg);
   }
   .btn:focus { outline-style: none; }
+=======
+  }
+>>>>>>> 68f9dc90276c05cf310746dd1fa5b4ed8171508f
