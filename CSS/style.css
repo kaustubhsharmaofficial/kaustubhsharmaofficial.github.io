@@ -5,7 +5,7 @@
     margin:0%;
     padding:0%;
 }
-
+/*To make in the page section movemnet smooth, just like #contact*/
 html{
     scroll-behavior: smooth;
 }
@@ -21,7 +21,7 @@ html{
 }
 
 .left-nav{
-    width: 70%;
+    width: 100%;
     display: flex;
     align-items: center;
 
