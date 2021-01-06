@@ -160,6 +160,8 @@ html{
     max-width: 80%;
     margin: auto;
     font-family: 'Ubuntu', sans-serif;
+    /* Add during Youtube embed */
+    padding: 30px;
     
 
 }
@@ -187,8 +189,10 @@ html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.thumbnail img{
-    width: 250px;
+.thumbnail iframe{
+    /* Changes made during youtube video */
+    width: 300px;
+    height: 200px;
     border: 2px solid black;
     border-radius: 25px;
     margin-top: 19px;
@@ -217,4 +221,7 @@ html{
         height: 4px;
         margin: 5px 3px;
 
+}
+.twitter{
+    padding: 30px;
 }
