@@ -126,7 +126,7 @@
         }
 
         p {
-            text-align: center;
+            text-align: justify;
         }
 
         input[type=radio] {
@@ -142,18 +142,19 @@
             margin-bottom: 10px;
             cursor: pointer;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: bold;
+
         }
 
         input[type=radio]+label:hover {
-            border: 2px solid #483ac8;
-            color: rgb(85, 84, 84);
+            border: 2px solid slategray;
+            color: slategray;
         }
 
         input[type=radio]:checked+label {
             background-image: none;
             background-color: #0C0;
             color: #fff;
+            font-weight: bold;
             border: 1px solid #0C0 !important;
             -webkit-transition: all 0.2s ease-in-out;
             -moz-transition: all 0.2s ease-in-out;
@@ -163,7 +164,7 @@
         }
 
         .worngans {
-            background-color: #F36;
+            background-color: rgb(255, 0, 0);
             color: #fff;
             border: 1px solid #F36 !important;
             -webkit-transition: all 0.2s ease-in-out;
@@ -226,38 +227,71 @@
             padding-left: 50px;
             padding-right: 40px;
         }
+
+        table {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-collapse: seperate;
+            width: 100%;
+            border-radius: 50%;
+            border: solid black 1px;
+            border-radius: 6px;
+            -moz-border-radius: 6px;
+        }
+
+        td,
+        th {
+            text-align: left;
+            font-size: large;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+            padding: 10px 10px 10px 10px;
+            vertical-align: top;
+            text-align: left;
+            font-size: large;
+            border-left: solid black 1px;
+            border-top: solid black 1px;
+        }
+
+        td:first-child,
+        th:first-child {
+            border-left: none;
+        }
+
+        /* tr:nth-child(odd) {
+            background-color: rgb(83, 100, 83);
+        } */
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
 
 
 </head>
-<!--For navigation bar-->
-<nav class="navbar background navHeight-res">
-    <!--For navigation list-->
-    <ul class="left-nav visibileClass-res">
-        <!--For company logo-->
-        <div class="logo">
-            <img src="Images/KS.jpg" alt="KAUSTUBH SHARMA's Logo">
+
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);"
+    class="disable-select">
+    <!--For navigation bar-->
+    <nav class="navbar background navHeight-res">
+        <!--For navigation list-->
+        <ul class="left-nav visibileClass-res">
+            <!--For company logo-->
+            <div class="logo">
+                <img src="Images/KS.jpg" alt="KAUSTUBH SHARMA's Logo">
+            </div>
+            <li> <a href="/">Home </a></li>
+            <li> <a href="Cloud">Cloud</a></li>
+            <li> <a href="quiz">Quiz</a></li>
+            <li> <a href="https://www.linkedin.com/in/sharmakaustubh/">About </a></li>
+            <li> <a href="contact">Contact </a></li>
+        </ul>
+        <div class="right-nav visibileClass-res">
+            <!-- <input type="text" name="search" id="search">
+        <button class="btn btn-sm">Search</button>  -->
         </div>
-        <li> <a href="/">Home </a></li>
-        <li> <a href="Cloud">Cloud</a></li>
-        <li> <a href="quiz">Quiz</a></li>
-        <li> <a href="https://www.linkedin.com/in/sharmakaustubh/">About </a></li>
-        <li> <a href="contact">Contact </a></li>
-
-    </ul>
-    <div class="right-nav visibileClass-res">
-
-    </div>
-    <div class="burger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-
-</nav>
-
-<body class="disable-select">
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
     <div id="header">AWS Quiz-1
 
         <div class="mode">
@@ -272,46 +306,94 @@
     <ol>
         <div id="start">
             <h2>
-                <li>Which Statement is correct?
+                <li>An existing IAM user needs access to AWS resources in another account from an insecure environment
+                    for a short-term need (around 15 minutes). What would be the MOST secure method to provide the
+                    required access?
             </h2>
-            <ul>
-                <li>Statement 1: Each region has availability zones.</li>
-                <li>Statement 2: Each availability zone has regions.</li>
-            </ul>
             <br />
+            <input type="radio" name="question1">
+            <label>A. Use the GetSessionToken API operation to return a set of temporary security credentials and
+                specify 900 seconds in the DurationSeconds parameter</label><br />
+            <input type="radio" name="question1">
+            <label>B. Use the AssumeRoleWithWebIdentity API operation to assume a role in the other account that has the
+                required permissions</label><br />
             <input type="radio" id="Correct" name="question1">
-            <label for="Correct"">A. Statement1</label><br />
+            <label for="Correct">C. Use the AssumeRole API operation to assume a role in the other account that has the
+                required permissions, and specify 900 seconds in the DurationSeconds parameter</label> <br />
             <input type="radio" name="question1">
-            <label>B. Statement2</label><br />
-            <input type="radio" name="question1">
-            <label>C. Both statements can be correct depending on other conditions.</label> <br />
-            <input type="radio" name="question1">
-            <label>D. Both are wrong</label>
+            <label>D. Use the GetFederationToken API operation to return a set of temporary security credentials</label>
 
-            <BUTTON ONCLICK="ShowAndHide()" class="btn">Explanation</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName" STYLE="display:none">
-                <ul style="list-style-type: disc;">
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                </ul>
+                <table>
+                    <tr>
+                        <th>WHY INCORRECT?</th>
+                        <td>A. "Use the GetSessionToken API operation to return a set of temporary security credentials
+                            and
+                            specify 900 seconds in the DurationSeconds parameter" is incorrect as <b>GetSessionToken
+                                API operation</b> returns a set of temporary security credentials to an existing IAM
+                            user. This
+                            is useful for providing enhanced security, such as allowing AWS requests only when MFA is
+                            enabled for the IAM user.
+                            Because the credentials are temporary, they provide enhanced security when you have an IAM
+                            user who accesses your resources through a less secure environment. Examples of less secure
+                            environments include a mobile device or web browser.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>WHY INCORRECT?</th>
+                        <td>B. "Use the AssumeRoleWithWebIdentity API operation to assume a role in the other account
+                            that has the
+                            required permissions" is incorrect as it should includes the
+                            <b>DurationSeconds parameter</b> which can be used to specify how long the credentials last.
+                            That
+                            is a more secure option and could also be used with AssumeRole but wasn’t included with this
+                            option.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th bgcolor="green">WHY CORRECT?</th>
+                        <td>C. “Use the AssumeRole API operation to assume a role in the other account that has the
+                            required permissions, and specify 900 seconds in the DurationSeconds parameter” is the
+                            correct answer as <b>AssumeRole API</b> operation should be used to
+                            assume
+                            the role in the other account. The developer can use the DurationSeconds parameter to
+                            specify the duration of the role session from 900 seconds (15 minutes) up to the maximum
+                            session duration setting for the role.</td>
+                    </tr>
+                    <tr>
+                        <th>WHY INCORRECT?</th>
+                        <td>D. "Use the GetFederationToken API operation to return a set of temporary security
+                            credentials" is incorrect as <b>GetFederationToken API operation</b> returns a set of
+                            temporary
+                            security credentials for federated users. This API differs from AssumeRole in that the
+                            default expiration period is substantially longer (12 hours instead of one hour).
+                            Additionally, you can use the DurationSeconds parameter to specify a duration for the
+                            temporary security credentials to remain valid. The resulting credentials are valid for the
+                            specified duration, between 900 seconds (15 minutes) to 129,600 seconds (36 hours).The
+                            longer expiration period can help reduce the number of calls to AWS because you do not need
+                            to get new credentials as often</td>
+                    </tr>
+                    <tr>
+                        <th>Short Trick</th>
+                        <td>Here are two Keywords in Question is :
+
+                            <p>1.<b>"access to AWS resources in another account"</b> which redirect us to AssumeRole API
+                                operation as it is used to assume
+                                the role in the other account.</p>
+                            <p>2.<b>"for a short-term need (around 15 minutes)"</b> which redirect us to DurationSeconds
+                                parameter is used to
+                                specify the duration of the role session in seconds.</p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>References:</th>
+                        <td> <a
+                                href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html</a>
+                        </td>
+                    </tr>
+                </table>
             </DIV>
         </div>
         <div id="start">
@@ -323,38 +405,43 @@
                 <li>Statement 2: Each availability zone has regions.</li>
             </ul>
             <br />
-            <input type="radio" id="Correct" name="question2">
-            <label for="Correct">A. Statement1</label><br />
+            <input type="radio" name="question2">
+            <label>A. Statement1</label><br />
             <input type="radio" name="question2">
             <label>B. Statement2</label><br />
-            <input type="radio" name="question2">
-            <label>C. Both statements can be correct depending on other conditions.</label> <br />
+            <input type="radio" name="question2" id="Correct2">
+            <label for="Correct2">C. Both statements can be correct depending on other conditions.</label> <br />
             <input type="radio" name="question2">
             <label>D. Both are wrong</label>
 
             <BUTTON ONCLICK="ShowAndHide2()" class="btn">Explanation</BUTTON>
             <DIV ID="SectionName2" STYLE="display:none">
                 <ul style="list-style-type: disc;">
-                <li > AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers</li>
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
-                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-                    data centers.
-                    Each region has multiple availability zones(AZs).
-                    An AZ is one or more discrete physical data centers
+                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
+                        cluster
+                        data centers.
+                        Each region has multiple availability zones(AZs).
+                        An AZ is one or more discrete physical data centers</li>
+                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
+                        cluster
+                        data centers.
+                        Each region has multiple availability zones(AZs).
+                        An AZ is one or more discrete physical data centers
+                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
+                        cluster
+                        data centers.
+                        Each region has multiple availability zones(AZs).
+                        An AZ is one or more discrete physical data centers
+                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
+                        cluster
+                        data centers.
+                        Each region has multiple availability zones(AZs).
+                        An AZ is one or more discrete physical data centers
+                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
+                        cluster
+                        data centers.
+                        Each region has multiple availability zones(AZs).
+                        An AZ is one or more discrete physical data centers
                 </ul>
             </DIV>
         </div>
