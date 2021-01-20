@@ -407,7 +407,7 @@
                         <td><b>CONCEPT:GetSessionToken
                                 API operation</b></td>
                         <td><b>GetSessionToken
-                            API operation</b> returns a set of temporary security credentials to an existing IAM
+                                API operation</b> returns a set of temporary security credentials to an existing IAM
                             user. This
                             is useful for providing enhanced security, such as allowing AWS requests only when MFA is
                             enabled for the IAM user.
@@ -450,7 +450,7 @@
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td>Here are two Keywords in Question is :
+                        <td>There are two Keywords in Question:
 
                             <p>1.<b>"access to AWS resources in another account"</b> which redirect us to AssumeRole API
                                 operation as it is used to assume
@@ -473,51 +473,150 @@
         </div>
         <div id="start">
             <h2>
-                <li>Which Statement is correct?
+                <li>An Amazon EC2 instance is being deployed with an Elastic Load Balancer (ELB). A developer needs to
+                    run a script when the instance is being launched. What is the SIMPLEST method of running the script?
             </h2>
-            <ul>
-                <li>Statement 1: Each region has availability zones.</li>
-                <li>Statement 2: Each availability zone has regions.</li>
-            </ul>
             <br />
             <input type="radio" name="question2">
-            <label>A. Statement1</label><br />
+            <label>A. Using Amazon CloudWatch Events</label><br />
             <input type="radio" name="question2">
-            <label>B. Statement2</label><br />
-            <input type="radio" name="question2" id="Correct2">
-            <label for="Correct2">C. Both statements can be correct depending on other conditions.</label> <br />
+            <label>B. Place the code in the EC2 Metadata</label><br />
             <input type="radio" name="question2">
-            <label>D. Both are wrong</label>
+            <label>C. Using EC2 Run Command</label> <br />
+            <input type="radio" id="Correct2" name="question2">
+            <label for="Correct2">D. Place the code in the EC2 User Data</label>
 
-            <BUTTON ONCLICK="ShowAndHide2()" class="btn">Explanation</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide2()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName2" STYLE="display:none">
-                <ul style="list-style-type: disc;">
-                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
-                        cluster
-                        data centers.
-                        Each region has multiple availability zones(AZs).
-                        An AZ is one or more discrete physical data centers</li>
-                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
-                        cluster
-                        data centers.
-                        Each region has multiple availability zones(AZs).
-                        An AZ is one or more discrete physical data centers
-                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
-                        cluster
-                        data centers.
-                        Each region has multiple availability zones(AZs).
-                        An AZ is one or more discrete physical data centers
-                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
-                        cluster
-                        data centers.
-                        Each region has multiple availability zones(AZs).
-                        An AZ is one or more discrete physical data centers
-                    <li> AWS has the concept of a Region, which is a physical location around the world where AWS
-                        cluster
-                        data centers.
-                        Each region has multiple availability zones(AZs).
-                        An AZ is one or more discrete physical data centers
-                </ul>
+                <table>
+                    <tr>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:Amazon CloudWatch Events</b></td>
+                        <td><b>This service alerts you about events happening in your AWS resources, it does not allow
+                                you
+                                to run scripts on EC2 instances.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT:EC2 Metadata</b></td>
+                        <td>
+                            <b>EC2 Metadata</b> is data about your instance that you can
+                            use to configure or manage the running instance.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT:Run command</b></td>
+                        <td><b>Run command</b> does allow the running of scripts on EC2 instances at
+                            scale. However, this is not the simplest method of achieving this objective as we’re only
+                            dealing with a single instance.</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: green;">WHY D IS CORRECT?</th>
+                        <td><b>CONCEPT:EC2 User Data</b></td>
+                        <td> When you launch an instance in Amazon EC2, you have the option of
+                            passing <b>EC2 User Data</b> to the instance that can be used to perform common automated
+                            configuration
+                            tasks and even run scripts after the instance starts.You can pass two types of user data to
+                            Amazon EC2: shell scripts and cloud-init directives. You can also pass this data into the
+                            launch wizard as plain text, as a file (this is useful for launching instances using the
+                            command line tools), or as base64-encoded text (for API calls).</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td>There are two Keywords in Question:
+
+                            <p>1.<b>"run a script when the instance is being launched."</b> which redirect us to Run
+                                Command & EC2 User Data.</p>
+                            <p>2.<b>"SIMPLEST method of running the script"</b> which clearly redirect us to EC2 User
+                                Data.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td> <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>A Developer has created a serverless function that processes log files. The function should be
+                    invoked once every 15 minutes. How can the Developer automatically invoke the function using
+                    serverless services?
+            </h2>
+            <br />
+            <input type="radio" name="question2">
+            <label>A. Launch an EC2 Linux instance and add a command to periodically invoke the function to its
+                /etc/crontab file</label><br />
+            <input type="radio" name="question2">
+            <label>B. Configure the Lambda scheduler to run based on recurring time value.</label><br />
+            <input type="radio" id="Correct3" name="question2">
+            <label for="Correct3">C. Create an Amazon CloudWatch Events rule that is scheduled to run and invoke the
+                function.</label>
+            <br />
+            <input type="radio" name="question2">
+            <label for="Correct3">D. Create an Amazon SNS rule to send a notification to Lambda to instruct it to
+                run</label>
+
+            <BUTTON ONCLICK="ShowAndHide3()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName3" STYLE="display:none">
+                <table>
+                    <tr>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:EC2 Instance & /etc/crontab file</b></td>
+                        <td>This is automatic but it is not serverless as EC2 Instance is involved.
+                        </td>
+                        <td><b>More details:</b> Cron is a standard Unix utility that is used to schedule commands for
+                            automatic execution at specific intervals & Cron is controlled by a set of files called
+                            "crontabs".The /etc/crontab file is a special case file used to implement a system-wide
+                            crontab.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT:Lambda scheduler</b></td>
+                        <td>
+                            There is no <b>CONCEPT:Lambda scheduler</b> that can be used.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: green;">WHY C IS CORRECT?</th>
+                        <td><b>CONCEPT: Amazon CloudWatch Events</b></td>
+                        <td><b> Amazon CloudWatch Events</b>delivers a near real-time stream of system
+                            events that describe changes in Amazon Web Services (AWS) resources. Using simple rules that
+                            you can quickly set up, you can match events and route them to one or more target functions
+                            or streams.
+
+                            You can use Amazon CloudWatch Events to invoke the Lambda function on a recurring schedule
+                            of 15 minutes. This solution is entirely automated and serverless.</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT: Amazon SNS rules</b></td>
+                        <td> You cannot invoke a function by sending a notification to it from Amazon SNS.</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td>There are two Keywords in Question:
+
+                            <p>1.<b>"serverless services."</b> which redirect us to Amazon CloudWatch Events & Amazon
+                                SNS.</p>
+                            <p>2.<b>"automatically invoke the function"</b> which clearly redirect us to Amazon
+                                CloudWatch Events as You cannot invoke a function by sending a notification to it from
+                                Amazon SNS.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td> <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
             </DIV>
         </div>
         <script type="text/javascript">
