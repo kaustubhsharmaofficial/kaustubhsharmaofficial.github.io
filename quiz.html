@@ -4,27 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
     <title>Quiz</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
     </script>
     <style>
-        body {
-            padding: 3% 3% 10% 3%;
+        p {
+            padding-left: 3%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        img {
-            height: 140px;
-            width: 140px;
-        }
-
-        h1 {
-            color: #32a852;
-        }
-
         .mode {
+            padding-right: 30px;
+            margin-top: 12px;
             float: right;
+
         }
 
         .change {
@@ -56,8 +52,8 @@
             justify-content: space-between;
             padding: 5px;
             position: relative;
-            height: 15px;
-            width: 40px;
+            height: 5px;
+            width: 28px;
             transform: scale(1.5);
         }
 
@@ -67,23 +63,14 @@
             position: absolute;
             top: 2px;
             left: 2px;
-            height: 22px;
-            width: 22px;
+            height: 12px;
+            width: 13px;
             transform: translateX(0px);
             transition: transform 0.2s linear;
         }
 
         .checkbox:checked+.label .ball {
-            transform: translateX(24px);
-        }
-
-
-        .fa-moon {
-            color: #f1c40f;
-        }
-
-        .fa-sun {
-            color: #f39c12;
+            transform: translateX(19px);
         }
 
         li {
@@ -188,7 +175,7 @@
 
         .btn {
             padding: 8px 20px;
-            margin: 7px 3px;
+            margin: 5px 10px;
             border: 2px solid rgb(114, 50, 50);
             font-size: large;
             border-radius: 8px;
@@ -197,77 +184,298 @@
             cursor: pointer;
         }
 
+        .btn:hover {
+            color: rgb(58, 173, 64);
+            border: 2px solid rgb(94, 173, 58);
+        }
+
         .disable-select {
             user-select: none;
+
+        }
+
+        #darkbtn {
+            transition: 0.3s;
+        }
+
+        #darkball {
+            transition: 0.3s;
+        }
+
+        #header {
+            background-color: #f1f1f1;
+            /* Grey background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: center;
+            /* Centered text */
+            font-size: 50px;
+            /* Big font size */
+            font-weight: bold;
+            position: fixed;
+            /* Fixed position - sit on top of the page */
+
+            width: 100%;
+            /* Full width */
+            transition: 0.2s;
+            /* Add a transition effect (when scrolling - and font size is decreased) */
+        }
+
+        #start {
+            padding-top: 80px;
+            padding-left: 120px;
+            padding-right: 120px;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
 
 
 </head>
+<!--For navigation bar-->
+<nav class="navbar background navHeight-res">
+    <!--For navigation list-->
+    <ul class="left-nav visibileClass-res">
+        <!--For company logo-->
+        <div class="logo">
+            <img src="Images/KS.jpg" alt="KAUSTUBH SHARMA's Logo">
+        </div>
+        <li> <a href="/">Home </a></li>
+        <li> <a href="Cloud">Cloud</a></li>
+        <li> <a href="quiz">Quiz</a></li>
+        <li> <a href="https://www.linkedin.com/in/sharmakaustubh/">About </a></li>
+        <li> <a href="/Contact">Contact </a></li>
+
+    </ul>
+    <div class="right-nav visibileClass-res">
+
+    </div>
+    <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+</nav>
 
 <body class="disable-select">
-    <div class="mode">
-        <input type="checkbox" class="checkbox" id="chk" class="change" />
-        <label class="label" for="chk">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <div class="ball"></div>
-        </label>
-    </div>
+    <div id="header">AWS Quiz-1
 
-    <h2>1. Which Statement is correct?</h2>
+        <div class="mode">
+
+            <input type="checkbox" class="checkbox" id="chk" class="change" />
+
+            <label class="label" for="chk" id="darkbtn">
+                <div class="ball" id="darkball"></div>
+            </label>
+        </div>
+    </div>
+    <ol>
+        <div id="start">
+            <h2>
+                <li>Which Statement is correct?
+            </h2>
+            <ul>
                 <li>Statement 1: Each region has availability zones.</li>
                 <li>Statement 2: Each availability zone has regions.</li>
-        
-    <br />
-    <input type="radio" id="Correct" name="question1">
-    <label for="Correct" ONCLICK="ShowAndHide()">A. Statement1</label><br />
-    <input type="radio" name="question1">
-    <label>B. Statement2</label><br />
-    <input type="radio" name="question1">
-    <label>C. Both statements can be correct depending on other conditions.</label> <br />
-    <input type="radio" name="question1">
-    <label>D. Both are wrong</label>
-    </div>
-    <BUTTON ONCLICK="ShowAndHide()" class="btn">Explanation</BUTTON>
-    <DIV ID="SectionName" STYLE="display:none">
-        <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
-            data centers.
-            Each region has multiple availability zones(AZs).
-            An AZ is one or more discrete physical data centers
-            </p>
-    </DIV>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('label').click(function () {
-                $('label').removeClass('worngans');
-                $(this).addClass('worngans');
+            </ul>
+            <br />
+            <input type="radio" id="Correct" name="question1">
+            <label for="Correct" ONCLICK="ShowAndHide()">A. Statement1</label><br />
+            <input type="radio" name="question1">
+            <label>B. Statement2</label><br />
+            <input type="radio" name="question1">
+            <label>C. Both statements can be correct depending on other conditions.</label> <br />
+            <input type="radio" name="question1">
+            <label>D. Both are wrong</label>
+
+            <BUTTON ONCLICK="ShowAndHide()" class="btn">Explanation</BUTTON>
+            <DIV ID="SectionName" STYLE="display:none">
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>Which Statement is correct?
+            </h2>
+            <ul>
+                <li>Statement 1: Each region has availability zones.</li>
+                <li>Statement 2: Each availability zone has regions.</li>
+            </ul>
+            <br />
+            <input type="radio" id="Correct" name="question2">
+            <label for="Correct" ONCLICK="ShowAndHide()">A. Statement1</label><br />
+            <input type="radio" name="question2">
+            <label>B. Statement2</label><br />
+            <input type="radio" name="question2">
+            <label>C. Both statements can be correct depending on other conditions.</label> <br />
+            <input type="radio" name="question2">
+            <label>D. Both are wrong</label>
+
+            <BUTTON ONCLICK="ShowAndHide2()" class="btn">Explanation</BUTTON>
+            <DIV ID="SectionName2" STYLE="display:none">
+                <ul>
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers</li>
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                <li> AWS has the concept of a Region, which is a physical location around the world where AWS cluster
+                    data centers.
+                    Each region has multiple availability zones(AZs).
+                    An AZ is one or more discrete physical data centers
+                </ul>
+            </DIV>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('label').click(function () {
+                    $('label').removeClass('worngans');
+                    $(this).addClass('worngans');
+                });
+
             });
 
-        });
-
-    </script>
-    <SCRIPT>
-        function ShowAndHide() {
-            var x = document.getElementById('SectionName');
-            if (x.style.display == 'none') {
-                x.style.display = 'block';
-            } else {
-                x.style.display = 'none';
+        </script>
+        <SCRIPT>
+            function ShowAndHide() {
+                var x = document.getElementById('SectionName');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
             }
-        }
-    </SCRIPT>
-    <script>
-        chk.addEventListener('change', () => {
-            document.body.classList.toggle('dark');
-        });
-    </script>
-    <script>// Try using right-click on the preview page. This script disables that functionality.
-        window.addEventListener('contextmenu', function (e) {
+            function ShowAndHide2() {
+                var x = document.getElementById('SectionName2');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide3() {
+                var x = document.getElementById('SectionName3');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide4() {
+                var x = document.getElementById('SectionName4');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide5() {
+                var x = document.getElementById('SectionName5');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide6() {
+                var x = document.getElementById('SectionName6');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide6() {
+                var x = document.getElementById('SectionName6');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide7() {
+                var x = document.getElementById('SectionName7');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide8() {
+                var x = document.getElementById('SectionName8');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide9() {
+                var x = document.getElementById('SectionName9');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide10() {
+                var x = document.getElementById('SectionName10');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
 
-            e.preventDefault();
-        }, false);</script>
+        </SCRIPT>
+        <script>
+            chk.addEventListener('change', () => {
+                document.body.classList.toggle('dark');
+            });
+        </script>
+        <script>// Try using right-click on the preview page. This script disables that functionality.
+            window.addEventListener('contextmenu', function (e) {
+
+                e.preventDefault();
+            }, false);</script>
+
+
+        <footer class="background">
+            <p class="text-footer">
+                Copyright &copy; by KAUSTUBH SHARMA 2021 -All rights reserved
+            </p>
+        </footer>
+        <script src="JS/responsive.js"></script>
+
 </body>
 
 </html>
