@@ -267,7 +267,7 @@
             border-collapse: collapse;
             margin: 0;
             padding: 0;
-            width: 100%;
+
             table-layout: fixed;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -276,6 +276,11 @@
 
             border: 1px solid #ddd;
             padding: .35em;
+        }
+
+        table td {
+
+            border: 1px solid #ddd;
         }
 
         table th,
@@ -450,7 +455,7 @@
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td>There are two Keywords in Question:
+                        <td colspan="2">There are two Keywords in Question:
 
                             <p>1.<b>"access to AWS resources in another account"</b> which redirect us to AssumeRole API
                                 operation as it is used to assume
@@ -463,7 +468,7 @@
                     </tr>
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
-                        <td> <a
+                        <td colspan="2"> <a
                                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html">AWS
                                 DOCS</a>
                         </td>
@@ -492,7 +497,7 @@
                     <tr>
                         <th style="background-color: red;">WHY A IS INCORRECT?</th>
                         <td><b>CONCEPT:Amazon CloudWatch Events</b></td>
-                        <td><b>This service alerts you about events happening in your AWS resources, it does not allow
+                        <td>This service alerts you about events happening in your AWS resources, it does not allow
                                 you
                                 to run scripts on EC2 instances.
                         </td>
@@ -525,7 +530,7 @@
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td>There are two Keywords in Question:
+                        <td colspan="2">There are two Keywords in Question:
 
                             <p>1.<b>"run a script when the instance is being launched."</b> which redirect us to Run
                                 Command & EC2 User Data.</p>
@@ -535,7 +540,8 @@
                     </tr>
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
-                        <td> <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">AWS
+                        <td colspan="2"> <a
+                                href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">AWS
                                 DOCS</a>
                         </td>
                     </tr>
@@ -579,14 +585,14 @@
                     <tr>
                         <th style="background-color: red;">WHY B IS INCORRECT?</th>
                         <td><b>CONCEPT:Lambda scheduler</b></td>
-                        <td>
+                        <td colspan="2">
                             There is no <b>CONCEPT:Lambda scheduler</b> that can be used.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: green;">WHY C IS CORRECT?</th>
                         <td><b>CONCEPT: Amazon CloudWatch Events</b></td>
-                        <td><b> Amazon CloudWatch Events</b>delivers a near real-time stream of system
+                        <td colspan="2"><b> Amazon CloudWatch Events</b>delivers a near real-time stream of system
                             events that describe changes in Amazon Web Services (AWS) resources. Using simple rules that
                             you can quickly set up, you can match events and route them to one or more target functions
                             or streams.
@@ -597,11 +603,12 @@
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
                         <td><b>CONCEPT: Amazon SNS rules</b></td>
-                        <td> You cannot invoke a function by sending a notification to it from Amazon SNS.</td>
+                        <td colspan="2"> You cannot invoke a function by sending a notification to it from Amazon SNS.
+                        </td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td>There are two Keywords in Question:
+                        <td colspan="2">There are two Keywords in Question:
 
                             <p>1.<b>"serverless services."</b> which redirect us to Amazon CloudWatch Events & Amazon
                                 SNS.</p>
@@ -609,14 +616,15 @@
                                 CloudWatch Events as You cannot invoke a function by sending a notification to it from
                                 Amazon SNS.</p>
                         </td>
-                        <td><b style="background-color:chocolate;">NEW SERVICE ALERT:</b>Amazon EventBridge is the preferred way to manage your events.
+                        <td><b style="background-color:chocolate;">NEW SERVICE ALERT:</b>Amazon EventBridge is the
+                            preferred way to manage your events.
                             CloudWatch Events and EventBridge are the same underlying service and API, but EventBridge
                             provides more features. Changes you make in either CloudWatch or EventBridge will appear in
                             each console.</td>
                     </tr>
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
-                        <td> <a
+                        <td colspan="3"> <a
                                 href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">AWS
                                 DOCS</a>
                         </td>
@@ -624,88 +632,7 @@
                 </table>
             </DIV>
         </div>
-        <div id="start">
-            <h2>
-                <li>A Developer has created a serverless function that processes log files. The function should be
-                    invoked once every 15 minutes. How can the Developer automatically invoke the function using
-                    serverless services?
-            </h2>
-            <br />
-            <input type="radio" name="question2">
-            <label>A. Launch an EC2 Linux instance and add a command to periodically invoke the function to its
-                /etc/crontab file</label><br />
-            <input type="radio" name="question2">
-            <label>B. Configure the Lambda scheduler to run based on recurring time value.</label><br />
-            <input type="radio" id="Correct3" name="question2">
-            <label for="Correct3">C. Create an Amazon CloudWatch Events rule that is scheduled to run and invoke the
-                function.</label>
-            <br />
-            <input type="radio" name="question2">
-            <label for="Correct3">D. Create an Amazon SNS rule to send a notification to Lambda to instruct it to
-                run</label>
 
-            <BUTTON ONCLICK="ShowAndHide3()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
-            <DIV ID="SectionName3" STYLE="display:none">
-                <table>
-                    <tr>
-                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
-                        <td><b>CONCEPT:EC2 Instance & /etc/crontab file</b></td>
-                        <td>This is automatic but it is not serverless as EC2 Instance is involved.
-                        </td>
-                        <td><b>More details:</b> Cron is a standard Unix utility that is used to schedule commands for
-                            automatic execution at specific intervals & Cron is controlled by a set of files called
-                            "crontabs".The /etc/crontab file is a special case file used to implement a system-wide
-                            crontab.
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:Lambda scheduler</b></td>
-                        <td>
-                            There is no <b>CONCEPT:Lambda scheduler</b> that can be used.
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: green;">WHY C IS CORRECT?</th>
-                        <td><b>CONCEPT: Amazon CloudWatch Events</b></td>
-                        <td><b> Amazon CloudWatch Events</b>delivers a near real-time stream of system
-                            events that describe changes in Amazon Web Services (AWS) resources. Using simple rules that
-                            you can quickly set up, you can match events and route them to one or more target functions
-                            or streams.
-
-                            You can use Amazon CloudWatch Events to invoke the Lambda function on a recurring schedule
-                            of 15 minutes. This solution is entirely automated and serverless.</td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: Amazon SNS rules</b></td>
-                        <td> You cannot invoke a function by sending a notification to it from Amazon SNS.</td>
-                    </tr>
-                    <tr>
-                        <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td>There are two Keywords in Question:
-
-                            <p>1.<b>"serverless services."</b> which redirect us to Amazon CloudWatch Events & Amazon
-                                SNS.</p>
-                            <p>2.<b>"automatically invoke the function"</b> which clearly redirect us to Amazon
-                                CloudWatch Events as You cannot invoke a function by sending a notification to it from
-                                Amazon SNS.</p>
-                        </td>
-                        <td><b style="background-color:chocolate;">NEW SERVICE ALERT:</b>Amazon EventBridge is the preferred way to manage your events.
-                            CloudWatch Events and EventBridge are the same underlying service and API, but EventBridge
-                            provides more features. Changes you make in either CloudWatch or EventBridge will appear in
-                            each console.</td>
-                    </tr>
-                    <tr>
-                        <th style="background-color:blueviolet;">References:</th>
-                        <td> <a
-                                href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">AWS
-                                DOCS</a>
-                        </td>
-                    </tr>
-                </table>
-            </DIV>
-        </div>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('label').click(function () {
