@@ -1,119 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="CSS/style.css">
-  <link rel="stylesheet" href="CSS/responsive.css">
-  <!--For title -->
-  <title>KAUSTUBH SHARMA - Cloud,Tech , Stories & More</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
-<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
-  <!--For navigation bar-->
-  <nav class="navbar background navHeight-res">
-    <!--For navigation list-->
-    <ul class="left-nav visibileClass-res">
-      <!--For company logo-->
-      <div class="logo">
-        <img src="Images/KS.jpg" alt="KAUSTUBH SHARMA's Logo">
-      </div>
-      <li> <a href="/">Home </a></li>
-      <li> <a href="cloud">Cloud</a></li>
-      <li> <a href="quiz">Quiz</a></li>
-      <li> <a href="https://www.linkedin.com/in/sharmakaustubh/">About </a></li>
-      <li> <a href="contact">Contact </a></li>
-    </ul>
-    <div class="right-nav visibileClass-res">
-      <!-- <input type="text" name="search" id="search">
-      <button class="btn btn-sm">Search</button>  -->
-    </div>
-    <div class="burger">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-  </nav>
-  <section class="background firstSection">
-    <div class="box-main">
-      <div class="firstHalf">
-        <p class="text-big">KAUSTUBH SHARMA</p>
-        <p class="text-small">  <span
-            class="txt-rotate"
-            data-period="2000"
-            data-rotate='[ "AWS Certified Solutions Architect", "AWS Certified Graduate", "Cloud Blogger", "YouTuber"]'></span></p>
-        <div class="buttons">
-          <button class="btn"><a href="https://www.youtube.com/kaustubhsharma?sub_confirmation=1">Subscribe</a></button>
-          <button class="btn"><a href="https://www.youtube.com/c/KAUSTUBHSHARMA/videos">Watch</a></button>
-        </div>
-      </div>
-      <div class="secondHalf">
-        <img src="Images/KS.jpg" alt="KS">
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="paras">
-      <p class="sectionTag text-big">
-        AWS Developer Certification Course 2021
-      </p>
-
-      <p class="sectionSubTag text-small">
-
-        AWS Developer Certification Course 2021 (DVA-C01) by KAUSTUBH SHARMA L-01 Cloud Engineer Amazon
-        This AWS tutorial is ideal for those who want to learn AWS and become AWS Certified Developer.
-
-      </p>
-    </div>
-    <div class="box-main">
-      <div class="thumbnail">
-        <iframe width="640" height="360" src="https://www.youtube.com/embed/B3pw_uK6Gko" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section secLeft">
-    <div class="paras">
-      <p class="sectionTag text-big">
-        KeyBoard Shortcuts
-      </p>
-
-      <p class="sectionSubTag text-small">
-        Here are some amazing Keyboard shortcuts which makes you forget your mouse!
-      </p>
-    </div>
-    <div class="box-main">
-      <div class="thumbnail">
-        <iframe width="720" height="300" src="https://www.youtube.com/embed/nVlGDV_YLqs" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;autoplay"
-          allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
-
-  <hr>
-  <section class="section">
-    <div class="twitter">
-      <a class="twitter-timeline" data-width="500" data-height="500" data-dnt="true" data-theme="dark"
-        href="https://twitter.com/LATESTOLANGA?ref_src=twsrc%5Etfw">Tweets by LATESTOLANGA</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-  </section>
-
-
-  <footer class="background">
-    <p class="text-footer">
-      Copyright &copy; by KAUSTUBH SHARMA 2021 -All rights reserved
-    </p>
-  </footer>
-  <script src="JS/responsive.js"></script>
-  <script src="JS/type.js"></script>
- 
+<body>
+    <div data-include="blog"></div>
+<div data-include="footer"></div>
+    <script>
+        $(function () {
+  var includes = $('[data-include]')
+  $.each(includes, function () {
+    var file = '/' + $(this).data('include') + '.html'
+    $(this).load(file)
+  })
+})
+    </script>
 </body>
- 
 </html>
