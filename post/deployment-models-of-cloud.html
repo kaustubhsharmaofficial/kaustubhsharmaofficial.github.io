@@ -7,17 +7,30 @@
   <link rel="stylesheet" href="CSS/style.css">
   <link rel="stylesheet" href="CSS/responsive.css">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <title>Document</title>
+  <!-- Header Scripts Starts -->
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script>
+   $(function () {
+  var includes = $('[data-include]')
+  $.each(includes, function () {
+    var file = '../views/' + $(this).data('include') + '.html'
+    $(this).load(file)
+  })
+})
+  </script>
+  <!-- Header Scripts Ends -->
+  <title>5 SECRET Keyboard Shortcuts That You DON'T Know!!!How to use computer WITHOUT mouse?</title>
 </head>
 
-<body>
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
+  <div data-include="header"></div>
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-col">
       <div class="mx-auto">
         <div class="rounded-lg h-64 overflow-hidden">
           <img alt="content" class="object-cover object-center h-full w-full"
             src="https://source.unsplash.com/6jaBQAURBgI">
-          <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://source.unsplash.com/6jaBQAURBgI"
+          <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://source.unsplash.com/RDYdOvk8ats"
             alt="blog">
         </div>
         
