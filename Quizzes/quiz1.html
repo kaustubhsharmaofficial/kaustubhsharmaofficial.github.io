@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/responsive.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
     <title>Quiz</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
@@ -175,7 +175,7 @@
             transition: all 0.2s ease-in-out;
         }
 
-        .btn {
+        .btn1 {
             padding: 8px 20px;
             margin: 5px 10px;
             border: 2px solid rgb(114, 50, 50);
@@ -186,7 +186,7 @@
             cursor: pointer;
         }
 
-        .btn:hover {
+        .btn1:hover {
             color: rgb(58, 173, 64);
             border: 2px solid rgb(94, 173, 58);
         }
@@ -204,7 +204,7 @@
             transition: 0.3s;
         }
 
-        #header {
+        #header12 {
             background-color: #f1f1f1;
             /* Grey background */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -214,8 +214,9 @@
             font-size: 50px;
             /* Big font size */
             font-weight: bold;
-            position: fixed;
+            position: sticky;
             /* Fixed position - sit on top of the page */
+            height: 80px;
 
             width: 100%;
             /* Full width */
@@ -341,39 +342,37 @@
                 border-bottom: 0;
             }
         }
+        /* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
+ <!-- Header Scripts Starts -->
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+ <script>
+  $(function () {
+ var includes = $('[data-include]')
+ $.each(includes, function () {
+   var file = '../views/' + $(this).data('include') + '.html'
+   $(this).load(file)
+ })
+})
+ </script>
 
-
+ <!-- Header Scripts Ends -->
 </head>
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
+    <div data-include="header"></div>
 
-<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);"
-    class="disable-select">
-    <!--For navigation bar-->
-    <nav class="navbar background navHeight-res">
-        <!--For navigation list-->
-        <ul class="left-nav visibileClass-res">
-            <!--For company logo-->
-            <div class="logo">
-                <img src="Images/KS.jpg" alt="KAUSTUBH SHARMA's Logo">
-            </div>
-            <li> <a href="/">Home </a></li>
-            <li> <a href="blog">Blog</a></li>
-            <li> <a href="quiz">Quiz</a></li>
-            <li> <a href="about">About </a></li>
-            <li> <a href="contact">Contact </a></li>
-        </ul>
-        <div class="right-nav visibileClass-res">
-            <!-- <input type="text" name="search" id="search">
-        <button class="btn btn-sm">Search</button>  -->
-        </div>
-        <div class="burger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </nav>
-    <div id="header">AWS Quiz-1
+    <div id="header12">AWS Quiz-1
 
         <div class="mode">
 
@@ -384,6 +383,7 @@
             </label>
         </div>
     </div>
+
     <ol>
         <div id="start">
             <h2>
@@ -404,7 +404,7 @@
             <input type="radio" name="question1">
             <label>D. Use the GetFederationToken API operation to return a set of temporary security credentials</label>
 
-            <BUTTON ONCLICK="ShowAndHide()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName" STYLE="display:none">
                 <table>
                     <tr>
@@ -491,7 +491,7 @@
             <input type="radio" id="Correct2" name="question2">
             <label for="Correct2">D. Place the code in the EC2 User Data</label>
 
-            <BUTTON ONCLICK="ShowAndHide2()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide2()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName2" STYLE="display:none">
                 <table>
                     <tr>
@@ -568,7 +568,7 @@
             <label>D. Create an Amazon SNS rule to send a notification to Lambda to instruct it to
                 run</label>
 
-            <BUTTON ONCLICK="ShowAndHide3()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide3()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName3" STYLE="display:none">
                 <table>
                     <tr>
@@ -650,7 +650,7 @@
             <input type="radio" name="question2">
             <label>D. AWS Lambda and Amazon API Gateway</label>
 
-            <BUTTON ONCLICK="ShowAndHide4()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide4()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName4" STYLE="display:none">
                 <table>
                     <tr>
@@ -737,7 +737,7 @@
             <label>D. Use AWS STS AssumeRole in the application code and assume a role with Get* permissions on the S3
                 bucket</label>
 
-            <BUTTON ONCLICK="ShowAndHide5()" class="btn">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <BUTTON ONCLICK="ShowAndHide5()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName5" STYLE="display:none">
                 <table>
                     <tr>
@@ -917,7 +917,7 @@
                 Copyright &copy; by KAUSTUBH SHARMA 2021 -All rights reserved
             </p>
         </footer>
-        <script src="JS/responsive.js"></script>
+        <script src="../JS/responsive.js"></script>
 
 </body>
 

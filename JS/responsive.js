@@ -124,17 +124,30 @@ return true;
 }
 
 // When the user scrolls down 20px from the top of the document, resize the header's font size
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {scrollFunction(),myFunction()};
 
+// Get the header
+var header12 = document.getElementById("header12");
+
+// Get the offset position of the navbar
+var sticky = header12.offsetTop;
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("header").style.fontSize = "30px";
+    document.getElementById("header12").style.fontSize = "30px";
     document.getElementById("darkbtn").style.height = "2px";
     document.getElementById("darkball").style.height = "10px";
   } else {
-    document.getElementById("header").style.fontSize = "50px";
+    document.getElementById("header12").style.fontSize = "50px";
     document.getElementById("darkbtn").style.height = "16px";
     document.getElementById("darkball").style.height = "20px";
   }
 }
   
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
