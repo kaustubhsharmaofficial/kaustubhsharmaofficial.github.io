@@ -1,2 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <title>Page not Found</title>
+    <style>
+        body{
+            padding-top: 100px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-weight:bold;
+        }
+    </style>
+<!-- Header Scripts Starts -->
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+ <script>
+  $(function () {
+ var includes = $('[data-include]')
+ $.each(includes, function () {
+   var file = '../views/' + $(this).data('include') + '.html'
+   $(this).load(file)
+ })
+})
+ </script>
 
-Choose Content from Above
+ <!-- Header Scripts Ends -->
+</head>
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);" style="background-color: black;">
+    <div data-include="header"></div>
+    
+  Your Requested Page is not found.Kindly choose options from Above.
+    <script src="JS/responsive.js"></script>
+    <script src="JS/type.js"></script>
+</body>
+</html>
