@@ -130,7 +130,7 @@ window.onscroll = function() {scrollFunction(),myFunction()};
 var header12 = document.getElementById("header12");
 
 // Get the offset position of the navbar
-var sticky = header12.offsetTop;
+var sticky = header12;
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     document.getElementById("header12").style.fontSize = "30px";
