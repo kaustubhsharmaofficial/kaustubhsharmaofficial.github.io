@@ -181,9 +181,9 @@ html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.thumbnail iframe{
+.thumbnail img{
     /* Changes made during youtube video */
-    width: 300px;
+    width: 500px;
     height: 200px;
     border: 2px solid black;
     border-radius: 25px;
