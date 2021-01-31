@@ -124,24 +124,24 @@ return true;
 }
 
 // When the user scrolls down 20px from the top of the document, resize the header's font size
-window.onscroll = function() {scrollFunction(),myFunction()};
+window.onscroll = function() {myFunction()};
 
-// Get the header
-var header12 = document.getElementById("header12");
+// // Get the header
+// var header12 = document.getElementById("header12");
 
-// Get the offset position of the navbar
-var sticky = header12;
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("header12").style.fontSize = "30px";
-    document.getElementById("darkbtn").style.height = "2px";
-    document.getElementById("darkball").style.height = "10px";
-  } else {
-    document.getElementById("header12").style.fontSize = "50px";
-    document.getElementById("darkbtn").style.height = "16px";
-    document.getElementById("darkball").style.height = "20px";
-  }
-}
+// // Get the offset position of the navbar
+// var sticky = header12;
+// function scrollFunction() {
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     document.getElementById("header12").style.fontSize = "30px";
+//     document.getElementById("darkbtn").style.height = "2px";
+//     document.getElementById("darkball").style.height = "10px";
+//   } else {
+//     document.getElementById("header12").style.fontSize = "50px";
+//     document.getElementById("darkbtn").style.height = "16px";
+//     document.getElementById("darkball").style.height = "20px";
+//   }
+// }
   
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
