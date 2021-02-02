@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS CheatSheets</title>
+    <meta name="description" content="AWS CheatSheets are important concepts which you used used to revise important topics for AWS Certified Devloper Associate Certification Exam.">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    
+    <style>
+        .btn1 {
+            padding: 8px 20px;
+            margin: 5px 10px;
+            border: 2px solid rgb(58, 173, 64);
+            font-size: large;
+            border-radius: 8px;
+            color: rgb(58, 173, 64);
+            background: none;
+            cursor: pointer;
+        }
+
+        .btn1:hover {
+            color: rgb(246, 230, 9);
+            border: 2px solid rgb(246, 230, 9);
+        }
+        body{
+            text-align: center;
+            padding-top: 100px;
+        }
+        a{
+            color: yellow;
+        }
+    </style>
+    <title>AWS Certification Questions</title>
+<!-- Header Scripts Starts -->
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+ <script>
+  $(function () {
+ var includes = $('[data-include]')
+ $.each(includes, function () {
+   var file = '../views/' + $(this).data('include') + '.html'
+   $(this).load(file)
+ })
+})
+ </script>
+
+ <!-- Header Scripts Ends -->
+</head>
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);" style="background-color: black;">
+    <div data-include="header"></div>
+    
+    Quiz
+    <!-- Quiz Buttons Starts -->
+    <a href="cheatsheets/EC2"><BUTTON class="btn1" onclick="">EC2</BUTTON></a>
+    <a href="cheatsheets/S3"><BUTTON class="btn1" >S3</BUTTON></a>
+    <a href="cheatsheets/IAM"><BUTTON class="btn1" >IAM</BUTTON></a>
+    <a href="cheatsheets/CloudWatch"><BUTTON class="btn1" >CloudWatch</BUTTON></a>
+    <a href="cheatsheets/Route_53"><BUTTON class="btn1" >Route 53</BUTTON></a>
+    <!-- Quiz Buttons Ends-->
+</div>
+</body>
+</html>

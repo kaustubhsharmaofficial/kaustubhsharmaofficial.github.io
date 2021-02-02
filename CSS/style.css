@@ -15,10 +15,9 @@ html{
     align-items: center;
     /*To Make header Sticky*/
     position: fixed;
-    top: 0;
+    top: 0px;
     /* Causes bule blinkwhen clicked  */
     /* cursor: pointer; */
-    
 }
 
 .left-nav{
