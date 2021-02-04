@@ -460,9 +460,10 @@
                         <th style="background-color:yellowgreen;">Short Trick</th>
                         <td colspan="3">There is one Keywords in Question:
 
-                            <p>1.<b>"MOST secure way to grant necessary permissions"</b> which redirect us to Amazon SNS
-                                as it is used to send push
-                                notification messages to both mobile devices and desktops.</p>
+                            <p>1.<b>"Each service requires
+                                    specific permissions to various AWS services"</b> which redirect us to IAM roles are
+                                required to specify permissions & to specify different permissions to various services,
+                                IAM role should be applied to the ECS task definition, not the ECS cluster.</p>
                         </td>
                     </tr>
                     <tr>
@@ -483,65 +484,64 @@
                     Which solution is the BEST fit for the company’s requirements?
             </h2>
             <br />
-            <input type="radio" name="question2">
-            <label>A. An Amazon ECS Cluster with Auto Scaling</label><br />
+            <input type="radio" id="Correct2" name="question2">
+            <label for="Correct2">A. Amazon ECS with the Fargate launch type</label><br />
             <input type="radio" name="question2">
             <label>B. Amazon ECS with the EC2 launch type</label><br />
             <input type="radio" name="question2">
             <label>C. An Amazon ECS Service with Auto Scaling</label> <br />
-            <input type="radio" id="Correct2" name="question2">
-            <label for="Correct2">D. Amazon ECS with the Fargate launch type</label>
+            <input type="radio" name="question2">
+            <label>D. An Amazon ECS Cluster with Auto Scaling</label>
 
             <BUTTON ONCLICK="ShowAndHide2()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName2" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
-                        <td><b>CONCEPT:Amazon CloudWatch Events</b></td>
-                        <td>This does not specify the launch type. You can run an ECS Cluster on the Fargate or EC2 launch types.
+                        <th style="background-color: green;">WHY A IS CORRECT?</th>
+                        <td><b>CONCEPT:Amazon ECS with the Fargate launch type</b></td>
+
+                        <td>With this model AWS charge you for running tasks rather than running container instances.
+                            The Fargate launch type allows you to run your containerized applications without the need
+                            to provision and manage the backend infrastructure. You just register your task definition
+                            and Fargate launches the container for you. The Fargate Launch Type is a serverless
+                            infrastructure managed by AWS.
+
+
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:EC2 Metadata</b></td>
+                        <td><b>CONCEPT:Amazon ECS with the EC2 launch type</b></td>
                         <td>
-                            <b>EC2 Metadata</b> is data about your instance that you can
-                            use to configure or manage the running instance.
+                            With this launch type you pay for running container instances (EC2 instances).
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT:Run command</b></td>
-                        <td><b>Run command</b> does allow the running of scripts on EC2 instances at
-                            scale. However, this is not the simplest method of achieving this objective as we’re only
-                            dealing with a single instance.</td>
+                        <td><b>CONCEPT:Amazon ECS Service with Auto Scaling</b></td>
+                        <td>This does not specify the launch type. You can run an ECS Service on the Fargate or EC2
+                            launch types.</td>
                     </tr>
                     <tr>
-                        <th style="background-color: green;">WHY D IS CORRECT?</th>
-                        <td><b>CONCEPT:EC2 User Data</b></td>
-                        <td> When you launch an instance in Amazon EC2, you have the option of
-                            passing <b>EC2 User Data</b> to the instance that can be used to perform common automated
-                            configuration
-                            tasks and even run scripts after the instance starts.You can pass two types of user data to
-                            Amazon EC2: shell scripts and cloud-init directives. You can also pass this data into the
-                            launch wizard as plain text, as a file (this is useful for launching instances using the
-                            command line tools), or as base64-encoded text (for API calls).</td>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT:Amazon ECS Cluster with Auto Scaling</b></td>
+                        <td>This does not specify the launch type. You can run an ECS Service on the Fargate or EC2
+                            launch types.</td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
                         <td colspan="2">There are two Keywords in Question:
 
-                            <p>1.<b>"run a script when the instance is being launched."</b> which redirect us to Run
-                                Command & EC2 User Data.</p>
-                            <p>2.<b>"An Amazon EC2 instance" & "SIMPLEST method of running the script"</b> which clearly
-                                redirect us to EC2 User
-                                Data as run command is used for multiple instances & EC2 User data is more simpler.</p>
+                            <p>1.<b>"company should be charged per running task"</b> Therefore, the best answer is to
+                                use Amazon ECS with the Fargate launch type as with this model AWS charge you for
+                                running tasks rather than running container instances.
+
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
                         <td colspan="2"> <a target="_blank"
-                                href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">AWS
+                                href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html">AWS
                                 DOCS</a>
                         </td>
                     </tr>
@@ -550,75 +550,81 @@
         </div>
         <div id="start">
             <h2>
-                <li>A company has released a new application on AWS. The company are concerned about security and
-                    require a tool that can automatically assess applications for exposure, vulnerabilities, and
-                    deviations from best practices.
-                    Which AWS service should they use?
+                <li>A Development team are creating a financial trading application. The application requires
+                    sub-millisecond latency for processing trading requests. Amazon DynamoDB is used to store the
+                    trading data. During load testing the Development team found that in periods of high utilization the
+                    latency is too high and read capacity must be significantly over-provisioned to avoid throttling.
+                    How can the Developers meet the latency requirements of the application?
+
 
             </h2>
             <br />
             <input type="radio" name="question2">
-            <label>A. AWS Secrets Manager</label><br />
+            <label>A. Use Amazon DynamoDB Accelerator (DAX) to cache the data</label><br />
             <input type="radio" name="question2">
-            <label>B. AWS Shield</label><br />
+            <label>B. Store the trading data in Amazon S3 and use Transfer Acceleration</label><br />
             <input type="radio" id="Correct3" name="question3">
-            <label for="Correct3">C. Amazon Inspector</label>
+            <label for="Correct3">C. Use exponential backoff in the application code for DynamoDB queries</label>
             <br />
             <input type="radio" name="question2">
-            <label>D. AWS WAF</label>
+            <label>D. Create a Global Secondary Index (GSI) for the trading data</label>
 
             <BUTTON ONCLICK="ShowAndHide3()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName3" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
-                        <td><b>CONCEPT:AWS Secrets Manager</b></td>
-                        <td> This service is used to store secure secrets, not to access vulnerabilities.
+                        <th style="background-color: green;">WHY A IS CORRECT?</th>
+                        <td><b>CONCEPT:Amazon DynamoDB Accelerator (DAX)</b></td>
+                        <td> <b>Amazon DynamoDB</b> is designed for scale and performance. In most cases, the DynamoDB
+                            response
+                            times can be measured in single-digit milliseconds. However, there are certain use cases
+                            that require response times in microseconds. For these use cases, <b>DynamoDB Accelerator
+                                (DAX)</b>
+                            delivers fast response times for accessing eventually consistent data.
+                            In this scenario the question is calling for sub-millisecond (e.g. microsecond) latency and
+                            this is required for read traffic as evidenced by the need to over-provision reads.
+                            Therefore, DynamoDB DAX would be the best solution for reducing the latency and meeting the
+                            requirements.
                         </td>
 
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:AWS Shield</b></td>
+                        <td><b>CONCEPT:AWS S3 Transfer Acceleration</b></td>
                         <td>
-                            this service is used to protect from distributed denial of service (DDoS) attacks.
+                            This will not reduce the latency of the application. Transfer Acceleration is used for
+                            improving performance of uploads of data to Amazon S3.
                         </td>
                     </tr>
                     <tr>
-                        <th style="background-color: green;">WHY C IS CORRECT?</th>
-                        <td><b>CONCEPT: Amazon Inspector</b></td>
-                        <td><b> Amazon Inspector</b> is an automated security
-                            assessment service that helps improve the security and compliance of applications deployed
-                            on AWS. Amazon Inspector automatically assesses applications for exposure, vulnerabilities,
-                            and deviations from best practices.
-                            After performing an assessment, Amazon Inspector produces a detailed list of security
-                            findings prioritized by level of severity. These findings can be reviewed directly or as
-                            part of detailed assessment reports which are available via the Amazon Inspector console or
-                            API.
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT: DynamoDB queries</b></td>
+                        <td><b> This may reduce the requirement for over-provisioning reads but it
+                                will not solve the problem of reducing latency. With this solution the application
+                                performance will be worse, it’s a case of reducing cost along with performance.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: AWS WAF(Web Application Firewall)</b></td>
-                        <td> This is a web application firewall that gives you control over how traffic reaches
-                            your applications by enabling you to create security rules that block common attack
-                            patterns, such as SQL injection or cross-site scripting, and rules that filter out specific
-                            traffic patterns you define.
+                        <td><b>CONCEPT: Global Secondary Index (GSI)</b></td>
+                        <td> <b>GSI</b> is used to speed up queries on non-key attributes. There is no requirement here
+                            for a
+                            Global Secondary Index.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="2">There is one Keywords in Question:
+                        <td colspan="2">There is two Keywords in Question:
 
-                            <p>1.<b>"automatically assess applications for exposure, vulnerabilities, and
-                                    deviations from best practices"</b> which redirect us directly to Amazon Inspector
-                                as it is only assessment service in given options.</p>
+                            <p>1.<b>"Latency"</b> & </p>
+                            <p>1.<b>"Read Capacity"</b></p> of DynamoDB.
+                            <p>& DynamoDB DAX main purpose is to improve latency & thus read capacity of DynamoDB.</p>
+
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
-                        <td colspan="2"> <a target="_blank"
-                                href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">AWS
+                        <td colspan="2"> <a target="_blank" href="https://aws.amazon.com/dynamodb/dax/">AWS
                                 DOCS</a>
                         </td>
                     </tr>
@@ -627,79 +633,92 @@
         </div>
         <div id="start">
             <h2>
-                <li>A Developer is creating a serverless website with content that includes HTML files, images, videos,
-                    and JavaScript (client-side scripts).
-
-                    Which combination of services should the Developer use to create the website?
+                <li>An organization has an Amazon S3 bucket containing premier content that they intend to make
+                    available to only paid subscribers of their website. The objects in the S3 bucket are private to
+                    prevent inadvertent exposure of the premier content to non-paying website visitors.
+                    How can the organization provide only paid subscribers the ability to download the premier content
+                    in the S3 bucket?
             </h2>
             <br />
-            <input type="radio" id="Correct4" name="question4">
-            <label for="Correct4">A. Amazon S3 and Amazon CloudFront</label><br />
+            <input type="radio" name="question4">
+            <label>A. Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3 bucket
+                objects</label><br />
             <input type="radio" name="question2">
-            <label>B. Amazon ECS and Redis</label><br />
-            <input type="radio" name="question2">
-            <label>C. Amazon EC2 and Amazon ElastiCache</label>
+            <label>B. Enable server-side encryption on the S3 bucket for data protection against the non-paying website
+                visitors</label><br />
+            <input type="radio" id="Correct4" name="question2">
+            <label for="Correct4">C. Generate a pre-signed object URL for the premier content file when a paid
+                subscriber requests a download</label>
             <br />
             <input type="radio" name="question2">
-            <label>D. AWS Lambda and Amazon API Gateway</label>
+            <label>D. Apply a bucket policy that grants anonymous users to download the content from the S3
+                bucket</label>
 
             <BUTTON ONCLICK="ShowAndHide4()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName4" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color: green;">WHY A IS CORRECT?</th>
-                        <td><b>CONCEPT:Amazon S3 and Amazon CloudFront</b></td>
-                        <td>You can use Amazon S3 to host a static website. On a static website, individual webpages
-                            include static content. They might also contain client-side scripts.
-
-                            To host a static website on Amazon S3, you configure an Amazon S3 bucket for website hosting
-                            and then upload your website content to the bucket. When you configure a bucket as a static
-                            website, you set permissions, add/upload an index document and enter the name of the index
-                            document when enabling static website hosting.
-
-                            To get content closer to users for better performance you can also use Amazon CloudFront in
-                            front of the S3 static website.
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:Bucket Policy with MFA</b></td>
+                        <td>Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3
+                            bucket objects would be very difficult to manage & it won't solve our problem to allow only
+                            paid subscribers.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:Amazon ECS and Redis</b></td>
+                        <td><b>CONCEPT:Server-side encryption on the S3 bucket </b></td>
                         <td>
-                            These services are also not serverless. Also Redis is an in-memory cache and is typically
-                            placed in front of a database, not a container.
+                            as this is encryption at rest and S3 will simply unencrypt the objects when users attempt to
+                            read them. This provides privacy protection for data at rest but does not restrict access.
                         </td>
                     </tr>
                     <tr>
-                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT: Amazon EC2 and Amazon ElastiCache</b></td>
-                        <td>The website is supposed to be serverless and neither of these services are serverless as
-                            they both use Amazon EC2 instances.</td>
+                        <th style="background-color: green;">WHY C IS CORRECT?</th>
+                        <td><b>CONCEPT: S3 pre-signed object URL</b></td>
+                        <td>
+                            <p>
+                                When Amazon S3 objects are private, only the object owner has permission to access these
+                                objects. However, the object owner can optionally share objects with others by creating
+                                a
+                                presigned URL, using their own security credentials, to grant time-limited permission to
+                                download the objects.
+                            </p>
+                            <p>
+                                When you create a presigned URL for your object, you must provide your security
+                                credentials,
+                                specify a bucket name, an object key, specify the HTTP method (GET to download the
+                                object)
+                                and expiration date and time. The presigned URLs are valid only for the specified
+                                duration.
+                            </p>
+                            <p>
+                                Anyone who receives the presigned URL can then access the object. In this scenario, a
+                                pre-signed URL can be generated only for paying customers and they will be the only
+                                website
+                                visitors who can view the premier content.
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: AWS Lambda and Amazon API Gateway</b></td>
-                        <td> These are both serverless services however for serving content such as HTML
-                            files, images, videos, and client-side JavaScript, Amazon S3 and CloudFront are <b>more
-                                appropriate & cost efficient</b>.
+                        <td><b>CONCEPT: Bucket policy that grants anonymous users </b></td>
+                        <td> This would provide everyone the ability to download the content.</b>.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="2">There are two Keywords in Question:
+                        <td colspan="2">There is one Keyword in Question:
 
-                            <p>1.<b>"serverless website"</b> which redirect us to option A & D as option B & C are not
-                                serverless services.</p>
-                            <p>2.<b>"HTML files, images, videos,
-                                    and JavaScript (client-side scripts)."</b>redirect us to Amazon S3 as it is
-                                very easy to configure S3 bucket as a static
-                                website, which can include HTML, images,videos, client-side Scripts.</p>
-                            <b>ALWAYS CHOOSE COST EFFICIENT SERVICES EXCEPT SPECIFICALLY TOLD IN QUESTION </b>
+                            <p>1.<b>"make available to only paid subscribers"</b> which redirect us to option C as in
+                                this scenario, a pre-signed URL can be generated only for paying customers and they will
+                                be the only website visitors who can view the premier content.
                         </td>
 
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
                         <td colspan="3"> <a target="_blank"
-                                href="https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html">AWS
+                                href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html">AWS
                                 DOCS</a>
                         </td>
                     </tr>
@@ -708,86 +727,87 @@
         </div>
         <div id="start">
             <h2>
-                <li>A Developer is writing a web application that allows users to view images from an Amazon S3 bucket.
-                    The users will log in with their Amazon login, as well as Facebook and/or Google accounts.
-
-                    How can the Developer provide this authentication capability?
+                <li>A Development team manage a hybrid cloud environment. They would like to collect system-level
+                    metrics from on-premises servers and Amazon EC2 instances. How can the Development team collect this
+                    information MOST efficiently?
             </h2>
             <br />
-            <input type="radio" id="Correct5" name="question5">
-            <label for="Correct5">A. Use Amazon Cognito with web identity federation</label><br />
+            <input type="radio" name="question5">
+            <label>A. Use CloudWatch detailed monitoring for both EC2 instances and on-premises servers</label><br />
+            <input type="radio" id="Correct5" name="question2">
+            <label for="Correct5">B. Install the CloudWatch agent on the on-premises servers and EC2
+                instances</label><br />
             <input type="radio" name="question2">
-            <label>B. Use Amazon Cognito with SAML-based identity federation</label><br />
-            <input type="radio" name="question2">
-            <label>C. Use AWS IAM Access/Secret keys in the application code to allow Get* on the S3 bucket</label>
+            <label>C. Install the CloudWatch agent on the EC2 instances and use a cron job on the on-premises
+                servers</label>
             <br />
             <input type="radio" name="question2">
-            <label>D. Use AWS STS AssumeRole in the application code and assume a role with Get* permissions on the S3
-                bucket</label>
+            <label>D. Use CloudWatch for monitoring EC2 instances and custom AWS CLI scripts using the put-metric-data
+                API</label>
 
             <BUTTON ONCLICK="ShowAndHide5()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName5" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color: green;">WHY A IS CORRECT?</th>
-                        <td><b>CONCEPT:Amazon S3 and Amazon CloudFront</b></td>
-                        <td>Amazon Cognito identity pools (federated identities) enable you to create unique identities
-                            for your users and federate them with identity providers. With an identity pool, you can
-                            obtain temporary, limited-privilege AWS credentials to access other AWS services. Amazon
-                            Cognito identity pools support the following identity providers:
-                            Public providers: <br>
-                            1.Login with Amazon (Identity Pools), <br>
-                            2.Facebook (Identity Pools), <br>
-                            3.Google (Identity Pools), <br>
-                            4.Sign in with Apple (Identity Pools),<br>
-                            5.Amazon Cognito User Pools,<br>
-                            6.Open ID Connect Providers (Identity Pools),<br>
-                            7.SAML Identity Providers (Identity Pools),<br>
-                            8.Developer Authenticated Identities (Identity Pools).<br>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:CloudWatch detailed monitoring</b></td>
+                        <td>This would not do anything for the on-premises instances.
+                            By default, your instance is enabled for basic monitoring. You can optionally enable
+                            detailed monitoring. After you enable detailed monitoring, the Amazon EC2 console displays
+                            monitoring graphs with a 1-minute period for the instance.<br>
+                            <b>Basic monitoring</b><br>
+                            Data is available automatically in 5-minute periods at no charge.<br>
+
+                            <b>Detailed monitoring</b><br>
+                            Data is available in 1-minute periods for an additional charge.<br>
                         </td>
                     </tr>
                     <tr>
-                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:Security Assertion Markup Language(SAML)</b></td>
-                        <td>Security Assertion Markup Language (SAML) is an open standard that allows identity providers
-                            (IdP) to pass authorization credentials to service providers (SP).
-                            SAML is used with directory sources such as Microsoft Active Directory, not Facebook or
-                            Google.
+                        <th style="background-color: green;">WHY B IS CORRECT?</th>
+                        <td><b>CONCEPT:CloudWatch agent </b></td>
+                        <td>The unified CloudWatch agent can be installed on both on-premises servers and Amazon EC2
+                            instances using multiple operating system versions. It enables you to do the following:<br>
+                            • Collect more system-level metrics from Amazon EC2 instances across operating systems. The
+                            metrics can include in-guest metrics, in addition to the metrics for EC2 instances.<br>
+                            • Collect system-level metrics from on-premises servers. These can include servers in a
+                            hybrid environment as well as servers not managed by AWS.<br>
+                            • Retrieve custom metrics from your applications or services using the StatsD and collectd
+                            protocols.<br>
+                            • Collect logs from Amazon EC2 instances and on-premises servers, running either Linux or
+                            Windows Server.<br>
+                            <p>Therefore, the Development team should install the CloudWatch agent on the on-premises
+                                servers and EC2 instances. This will allow them to collect system-level metrics from
+                                servers and instances across the hybrid cloud environment.</p>
+
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT: Best Practice in AWS IAM</b></td>
-                        <td>This is really insecure and against best practice. Always try to avoid embedding access keys
-                            in
-                            application code.</td>
+                        <td><b>CONCEPT: CloudWatch agent and cron job</b></td>
+                        <td>It is incorrect as the answer does not even specify what the cron job is going to do / use
+                            for gathering and sending the data.</td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: AWS (AWS Security Token Service)STS AssumeRole</b></td>
-                        <td> AWS Security Token Service (AWS STS) is a web service that enables you to request
-                            temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users
-                            or for users that you authenticate (federated users).So, STS Assume Role can do this but you
-                            cannot do this directly through a
-                            Facebook or Google login. For this scenario, a
-                            Cognito Identity Pool is required to authenticate the user from the social IdP and provide
-                            access to the AWS services</b>.
+                        <td><b>CONCEPT: CloudWatch and custom AWS CLI scripts</b></td>
+                        <td> This is not the most efficient option as you must write and maintain custom scripts. It is
+                            better to use the CloudWatch agent as it provides all the functionality required.</b>.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
                         <td colspan="2">There are two Keywords in Question:
 
-                            <p>1.<b>"authentication capability"</b> which redirect us to Amazon Cognito & STS AssumeRole
-                            </p>
-                            <p>2.<b>"as well as Facebook and/or Google accounts"</b> which redirect us to Amazon Cognito
-                                with web identity federation, as STS can't used to login through FB & Google .</p>
+                            <p>1.<b>"Collect system-level
+                                    metrics from on-premises servers & EC2 instances"</b> & <b>"Most efficiently"</b></p> redirects to
+                            CloudWatch agent can be installed on both on-premises servers and Amazon EC2
+                            instances & it is most effici also.
                         </td>
 
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
                         <td colspan="3"> <a target="_blank"
-                                href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html">AWS
+                                href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html">AWS
                                 DOCS</a>
                         </td>
                     </tr>
