@@ -443,14 +443,16 @@
                             used to control permissions for viewing, launching, and managing resources within ECS.
                             However, for this solution we need to control the permissions for an ECS task to access
                             other AWS services. For this we need to use IAM Roles for Tasks.
+
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT:Amazon CloudWatch Events</b></td>
-                        <td><b>Amazon CloudWatch Events</b> With IAM Roles for Tasks you apply the permissions directly
-                            to the task definition. This means multiple services can share the underlying single EC2 instance
-                            and only have the minimum privileges required, there is no need to use multiple instances
+                        <td><b>CONCEPT:Identity and Access Management (IAM) instance profile</b></td>
+                        <td> With IAM Roles for Tasks you apply the permissions directly
+                            to the task definition. This means multiple services can share the underlying single EC2
+                            instance
+                            and only have the minimum privileges required, there is no need to use multiple instances.
                         </td>
 
                     </tr>
@@ -458,7 +460,8 @@
                         <th style="background-color:yellowgreen;">Short Trick</th>
                         <td colspan="3">There is one Keywords in Question:
 
-                            <p>1.<b>"MOST secure way to grant necessary permissions"</b> which redirect us to Amazon SNS as it is used to send push
+                            <p>1.<b>"MOST secure way to grant necessary permissions"</b> which redirect us to Amazon SNS
+                                as it is used to send push
                                 notification messages to both mobile devices and desktops.</p>
                         </td>
                     </tr>
@@ -474,18 +477,20 @@
         </div>
         <div id="start">
             <h2>
-                <li>An Amazon EC2 instance is being deployed with an Elastic Load Balancer (ELB). A developer needs to
-                    run a script when the instance is being launched. What is the SIMPLEST method of running the script?
+                <li>A company runs many microservices applications that use Docker containers. The company are planning
+                    to migrate the containers to Amazon ECS. The workloads are highly variable and therefore the company
+                    prefers to be charged per running task.
+                    Which solution is the BEST fit for the company’s requirements?
             </h2>
             <br />
             <input type="radio" name="question2">
-            <label>A. Using Amazon CloudWatch Events</label><br />
+            <label>A. An Amazon ECS Cluster with Auto Scaling</label><br />
             <input type="radio" name="question2">
-            <label>B. Place the code in the EC2 Metadata</label><br />
+            <label>B. Amazon ECS with the EC2 launch type</label><br />
             <input type="radio" name="question2">
-            <label>C. Using EC2 Run Command</label> <br />
+            <label>C. An Amazon ECS Service with Auto Scaling</label> <br />
             <input type="radio" id="Correct2" name="question2">
-            <label for="Correct2">D. Place the code in the EC2 User Data</label>
+            <label for="Correct2">D. Amazon ECS with the Fargate launch type</label>
 
             <BUTTON ONCLICK="ShowAndHide2()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName2" STYLE="display:none">
@@ -493,9 +498,7 @@
                     <tr>
                         <th style="background-color: red;">WHY A IS INCORRECT?</th>
                         <td><b>CONCEPT:Amazon CloudWatch Events</b></td>
-                        <td>This service alerts you about events happening in your AWS resources, it does not allow
-                            you
-                            to run scripts on EC2 instances.
+                        <td>This does not specify the launch type. You can run an ECS Cluster on the Fargate or EC2 launch types.
                         </td>
                     </tr>
                     <tr>
