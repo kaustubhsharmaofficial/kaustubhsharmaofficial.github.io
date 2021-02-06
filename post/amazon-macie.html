@@ -9,9 +9,8 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         a {
-        color: blue;
+            color: blue;
         }
-
     </style>
     <!-- Header Scripts Starts -->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -35,7 +34,7 @@
             <div class="mx-auto">
                 <div class="rounded-lg h-64 overflow-hidden">
                     <img alt="content" class="object-cover object-center h-full w-full"
-                        src="https://source.unsplash.com/g1Kr4Ozfoac">
+                        src="https://source.unsplash.com/6qPzlmEJHOc">
 
                 </div>
 
@@ -43,36 +42,49 @@
                     <div
                         class="sm:w-3/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-justify sm:text-left">
                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">What is Amazon Macie?
-                            </h1>
+                        </h1>
                         <p class="leading-relaxed text-lg mb-4">
 
                         <p>
-                            Amazon Macie is a fully managed data security and data privacy service that uses machine
-                            learning and pattern matching to discover and protect your sensitive data in AWS. Amazon
-                            Macie automates the discovery of sensitive data at scale and lowers the cost of protecting
-                            your data. Macie automatically provides an inventory of Amazon S3 buckets including a list
+                            <li>Fully managed data security and data privacy service that uses machine
+                                learning and pattern matching to discover and protect your sensitive data in AWS.
+                            </li>
+                            <li>Automates the discovery of sensitive data at scale</li>
+                            <li>
+                                Lowers the cost of protecting
+                                your data.
+                            </li> 
+
+                        </p>
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>How it Works?</b>
+                            <li><B>STEP 1 : Amazon Macie</B></li> Enable Amazon Macie with one-click in AWS Management
+                            Console or a single API call.
+                            <li><B>STEP 2 : Continuoally evaluate your S3 environment</B></li> automatically generates
+                            an inventory of S3 buckets & details on the bucket-level security & access controls.
+                            <li><B>STEP 3 : Discover Sensitive data</B></li> Analyzes buckets using Machine learning &
+                            pattern matching to discover sensitive data, such as personally identifiable
+                            information(PII).
+                            <li><B>STEP 4 : Take Action</B></li>Generates findings & sends to Amazon Cloudwatch Events
+                            for integration into workflows & remediation actions.
+                            <p class="leading-relaxed text-lg mt-4" id="private">
+                                <b>Detailed Workflow</b></p>
+                            Macie automatically provides an inventory of Amazon S3 buckets including a list
                             of unencrypted buckets, publicly accessible buckets, and buckets shared with AWS accounts
                             outside those you have defined in AWS Organizations. Then, Macie applies machine learning
                             and pattern matching techniques to the buckets you select to identify and alert you to
                             sensitive data, such as personally identifiable information (PII).
-<p>
-    
-                                Macie’s alerts, or findings, can be searched and filtered in the AWS Management Console and
-                                sent to Amazon EventBridge, formerly called Amazon CloudWatch Events, for easy integration
-                                with existing workflow or event management systems, or to be used in combination with AWS
-                                services, such as AWS Step Functions to take automated remediation actions. This can help
-                                you meet regulations, such as the Health Insurance Portability and Accountability Act
-                                (HIPAA) and General Data Privacy Regulation (GDPR). You can get started with Amazon Macie by
-                                leveraging the 30-day free trial for bucket evaluation.
-    
-</p>
-<p class="leading-relaxed text-lg mt-4" id="private">
-    <b>How it Works?</b>
-<li><B>STEP 1 : Amazon Macie</B></li> Enable Amazon Macie with one-click in AWS Management Console or a single API call.
-<li><B>STEP 2 : Continuoally evaluate your S3 environment</B></li> automatically generates an inventory of S3 buckets & details on the bucket-level security & access controls.
-<li><B>STEP 3 : Discover Sensitive data</B></li> Analyzes buckets using Machine learning & pattern matching to discover sensitive data, such as personally identifiable information(PII).
-<li><B>STEP 4 : Take Action</B></li>Generates findings & sends to Amazon Cloudwatch Events for integration into workflows & remediation actions.
-<p>Learn more about Amazon Macie at - <a href="https://aws.amazon.com/macie/">AMAZON MACIE</a> </p>
+                        <p>
+
+                            Macie’s alerts, or findings, can be searched and filtered in the AWS Management Console and
+                            sent to Amazon EventBridge, formerly called Amazon CloudWatch Events, for easy integration
+                            with existing workflow or event management systems, or to be used in combination with AWS
+                            services, such as AWS Step Functions to take automated remediation actions. This can help
+                            you meet regulations, such as the Health Insurance Portability and Accountability Act
+                            (HIPAA) and General Data Privacy Regulation (GDPR). You can get started with Amazon Macie by
+                            leveraging the 30-day free trial for bucket evaluation.<br><br>
+                        <p>Learn more about Amazon Macie at - <a href="https://aws.amazon.com/macie/">AMAZON MACIE</a>
+                        </p>
 
 
 

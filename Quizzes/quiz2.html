@@ -448,7 +448,7 @@
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT:Identity and Access Management (IAM) instance profile</b></td>
+                        <td><b>CONCEPT:GIve minimum privileges</b></td>
                         <td> With IAM Roles for Tasks you apply the permissions directly
                             to the task definition. This means multiple services can share the underlying single EC2
                             instance
@@ -458,10 +458,10 @@
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="3">There is one Keywords in Question:
+                        <td colspan="3">There is one Keyword in Question:
 
                             <p>1.<b>"Each service requires
-                                    specific permissions to various AWS services"</b> which redirect us to IAM roles are
+                                    specific permissions to various AWS services"</b> which redirect us to IAM roles as they are
                                 required to specify permissions & to specify different permissions to various services,
                                 IAM role should be applied to the ECS task definition, not the ECS cluster.</p>
                         </td>
@@ -530,7 +530,7 @@
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="2">There are two Keywords in Question:
+                        <td colspan="2">There are one Keyword in Question:
 
                             <p>1.<b>"company should be charged per running task"</b> Therefore, the best answer is to
                                 use Amazon ECS with the Fargate launch type as with this model AWS charge you for
@@ -559,14 +559,14 @@
 
             </h2>
             <br />
-            <input type="radio" name="question2">
-            <label>A. Use Amazon DynamoDB Accelerator (DAX) to cache the data</label><br />
-            <input type="radio" name="question2">
-            <label>B. Store the trading data in Amazon S3 and use Transfer Acceleration</label><br />
             <input type="radio" id="Correct3" name="question3">
-            <label for="Correct3">C. Use exponential backoff in the application code for DynamoDB queries</label>
+            <label for="Correct3">A. Use Amazon DynamoDB Accelerator (DAX) to cache the data</label><br />
+            <input type="radio" name="question3">
+            <label>B. Store the trading data in Amazon S3 and use Transfer Acceleration</label><br />
+            <input type="radio"  name="question3">
+            <label >C. Use exponential backoff in the application code for DynamoDB queries</label>
             <br />
-            <input type="radio" name="question2">
+            <input type="radio" name="question3">
             <label>D. Create a Global Secondary Index (GSI) for the trading data</label>
 
             <BUTTON ONCLICK="ShowAndHide3()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
@@ -599,7 +599,7 @@
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
                         <td><b>CONCEPT: DynamoDB queries</b></td>
-                        <td><b> This may reduce the requirement for over-provisioning reads but it
+                        <td>This may reduce the requirement for over-provisioning reads but it
                                 will not solve the problem of reducing latency. With this solution the application
                                 performance will be worse, it’s a case of reducing cost along with performance.
                         </td>
@@ -801,7 +801,7 @@
                             <p>1.<b>"Collect system-level
                                     metrics from on-premises servers & EC2 instances"</b> & <b>"Most efficiently"</b></p> redirects to
                             CloudWatch agent can be installed on both on-premises servers and Amazon EC2
-                            instances & it is most effici also.
+                            instances & it is most efficient also.
                         </td>
 
                     <tr>
