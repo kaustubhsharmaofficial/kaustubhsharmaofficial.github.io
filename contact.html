@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <style>
             .register .nav-tabs .nav-link:hover{
@@ -17,16 +19,17 @@
                 margin-left: 30%;
             }
             .form-new{
-                margin-right: 22%;
-                margin-left: 20%;
+                margin-right: 12%;
+                margin-left: 10%;
             }
             .register-heading{
-                margin-left: 30%;
-              
+                margin-left: 40%;
+              align-content: center;
                 color: #e9ecef;
             }
-            .register-heading h1{
-                margin-left: 21%;
+            .register-heading h3{
+                
+                align-content: center;
                 margin-bottom: 50%;
                 color: #e9ecef;
             }
@@ -261,17 +264,41 @@ form {
     </style>
 </head>
 <body>
-    
+    <!--For navigation bar-->
+    <nav class="navbar background navHeight-res">
+      <!--For navigation list-->
+      <ul class="left-nav visibileClass-res">
+        <!--For company logo-->
+        <div class="logo">
+          <img src="Images/logo.jpg" alt="KAUSTUBH SHARMA's Logo">
+        </div>
+        <li> <a href="/">Home </a></li>
+        <li> <a href="blog">Blog</a></li>
+        <li> <a href="quiz">Quiz</a></li>
+        <li><a href="https://www.youtube.com/c/KAUSTUBHSHARMA/videos">Videos</a></li>
+        <li> <a href="about">About </a></li>
+        <li> <a href="contact">Contact </a></li>
+      </ul>
+      <div class="right-nav visibileClass-res">
+        <!-- <input type="text" name="search" id="search">
+        <button class="btn btn-sm">Search</button>  -->
+      </div>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>  
 <div class="container register">
             <div class="row">
                 <div class="col-md-12">
                         <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading">Contact Us</h3>
+                            <h3 class="register-heading" style="align-content: center;">Contact Us</h3>
                             <div class="row register-form">
                                 <div class="col-md-12">
                                     <form method="post" autocomplete="off" name="google-sheet">
                                         <div class="form-group">
-                                            <input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required=""/>
+                                            <input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required="" style="width;"/>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="Email" class="form-control" placeholder="Your Email *" value="" required=""/>
@@ -279,6 +306,9 @@ form {
                                         <div class="form-group">
                                             <input type="tel" name="Phone" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
                                         </div>
+                                        <div class="form-group">
+                                          <input type="text" name="Message" class="form-control" placeholder="Your Message *" value="" required=""/>
+                                      </div>
                                         <div class="form-group">
                                             <input type="submit" name="submit" class="btnSubmit btn-block" value="Submit" />
                                         </div>
