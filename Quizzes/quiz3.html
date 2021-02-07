@@ -701,71 +701,77 @@
         </div>
         <div id="start">
             <h2>
-                <li>A company is using Amazon CloudFront to provide low-latency access to a web application to its
-                    global users. The organization must encrypt all traffic between users and CloudFront, and all
-                    traffic between CloudFront and the web application.
-                    How can these requirements be met? (Select TWO.)
-                    ?
+                <li>A developer needs to implement a caching layer in front of an Amazon RDS database. If the caching
+                    layer fails, it is time consuming to repopulate cached data so the solution should be designed for
+                    maximum uptime. Which solution is best for this scenario?
+
             </h2>
             <br />
+            <input type="radio" name="question2">
+            <label>A. Migrate the database to Amazon RedShift</label><br />
+            <input type="radio" name="question2">
+            <label>B. Implement Amazon ElastiCache Memcached</label><br />
+            <input type="radio" name="question2">
+            <label>C. Implement Amazon DynamoDB DAX</label> <br />
             <input type="radio" id="Correct2" name="question2">
-            <label for="Correct2">A. Amazon ECS with the Fargate launch type</label><br />
-            <input type="radio" id="Correct6" name="question2">
-            <label for="Correct2">B. Amazon ECS with the EC2 launch type</label><br />
-            <input type="radio" name="question2">
-            <label>C. An Amazon ECS Service with Auto Scaling</label> <br />
-            <input type="radio" name="question2">
-            <label>D. An Amazon ECS Cluster with Auto Scaling</label>
+            <label for="Correct2">D. Implement Amazon ElastiCache Redis</label>
 
             <BUTTON ONCLICK="ShowAndHide2()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName2" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color: green;">WHY A IS CORRECT?</th>
-                        <td><b>CONCEPT:Amazon ECS with the Fargate launch type</b></td>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:RedShift</b></td>
 
-                        <td>With this model AWS charge you for running tasks rather than running container instances.
-                            The Fargate launch type allows you to run your containerized applications without the need
-                            to provision and manage the backend infrastructure. You just register your task definition
-                            and Fargate launches the container for you. The Fargate Launch Type is a serverless
-                            infrastructure managed by AWS.
+                        <td><b>RedShift</b> is a data warehouse for use in online analytics processing (OLAP) use cases.
+                            It is not suitable to be used as a caching layer.
 
 
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:Amazon ECS with the EC2 launch type</b></td>
+                        <td><b>CONCEPT: Memcached</b></td>
                         <td>
-                            With this launch type you pay for running container instances (EC2 instances).
+                            <b>Memcached</b> does not offer read replicas or auto-failover and therefore cannot provide
+                            high availability.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT:Amazon ECS Service with Auto Scaling</b></td>
-                        <td>This does not specify the launch type. You can run an ECS Service on the Fargate or EC2
-                            launch types.</td>
+                        <td><b>CONCEPT: DAX</b></td>
+                        <td><b>DAX</b> is used in front of DynamoDB, not Amazon RDS.</td>
                     </tr>
                     <tr>
-                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT:Amazon ECS Cluster with Auto Scaling</b></td>
-                        <td>This does not specify the launch type. You can run an ECS Service on the Fargate or EC2
-                            launch types.</td>
+                        <th style="background-color: green;">WHY D IS CORRECT?</th>
+                        <td><b>CONCEPT: Implement Amazon ElastiCache Redis</b></td>
+                        <td>Amazon ElastiCache provides fully managed implementations of two popular in-memory data
+                            stores – Redis and Memcached. ElastiCache is a web service that makes it easy to deploy and
+                            run Memcached or Redis protocol-compliant server nodes in the cloud.
+                            The in-memory caching provided by ElastiCache can be used to significantly improve latency
+                            and throughput for many read-heavy application workloads or compute-intensive workloads. It
+                            is common to use ElastiCache as a cache in front of databases such as Amazon RDS.
+                            The two implementations, Memcached, and Redis, each offer different capabilities and
+                            limitations.Only Redis supports read replicas and
+                            auto-failover.
+                            The Redis implementation must be used if high availability is required, as is necessary for
+                            this scenario. Therefore the correct answer is to use Amazon ElastiCache Redis.
+                        </td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="2">There are one Keyword in Question:
+                        <td colspan="2">There are two Keywords in Question:
 
-                            <p>1.<b>"company should be charged per running task"</b> Therefore, the best answer is to
-                                use Amazon ECS with the Fargate launch type as with this model AWS charge you for
-                                running tasks rather than running container instances.
+                            <p>1.<b>"caching layer in front of an Amazon RDS"</b> indicates towards ElastiCache, i.e.
+                                Option B & D,</p>
+                            <p>2.<b>"maximum uptime"</b> clearly signifies towards to Amazon ElastiCache Redis.</p>
 
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
                         <td colspan="2"> <a target="_blank"
-                                href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html">AWS
+                                href="https://aws.amazon.com/elasticache/redis-vs-memcached">AWS
                                 DOCS</a>
                         </td>
                     </tr>
@@ -774,169 +780,150 @@
         </div>
         <div id="start">
             <h2>
-                <li>A Development team are creating a financial trading application. The application requires
-                    sub-millisecond latency for processing trading requests. Amazon DynamoDB is used to store the
-                    trading data. During load testing the Development team found that in periods of high utilization the
-                    latency is too high and read capacity must be significantly over-provisioned to avoid throttling.
-                    How can the Developers meet the latency requirements of the application?
+                <li>A developer is planning to launch as serverless application composed of AWS Lambda, Amazon API
+                    Gateway, and Amazon DynamoDB. What is the EASIEST way to deploy the application using simple syntax?
 
 
             </h2>
             <br />
+            <input type="radio" name="question3">
+            <label>A. Use the Serverless Application Repository</label><br />
             <input type="radio" id="Correct3" name="question3">
-            <label for="Correct3">A. Use Amazon DynamoDB Accelerator (DAX) to cache the data</label><br />
+            <label for="Correct3">B. Use the Serverless Application Model</label><br />
             <input type="radio" name="question3">
-            <label>B. Store the trading data in Amazon S3 and use Transfer Acceleration</label><br />
-            <input type="radio" name="question3">
-            <label>C. Use exponential backoff in the application code for DynamoDB queries</label>
+            <label>C. Use AWS CloudFormation</label>
             <br />
             <input type="radio" name="question3">
-            <label>D. Create a Global Secondary Index (GSI) for the trading data</label>
+            <label>D. Use AWS Elastic Beanstalk</label>
 
             <BUTTON ONCLICK="ShowAndHide3()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName3" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color: green;">WHY A IS CORRECT?</th>
-                        <td><b>CONCEPT:Amazon DynamoDB Accelerator (DAX)</b></td>
-                        <td> <b>Amazon DynamoDB</b> is designed for scale and performance. In most cases, the DynamoDB
-                            response
-                            times can be measured in single-digit milliseconds. However, there are certain use cases
-                            that require response times in microseconds. For these use cases, <b>DynamoDB Accelerator
-                                (DAX)</b>
-                            delivers fast response times for accessing eventually consistent data.
-                            In this scenario the question is calling for sub-millisecond (e.g. microsecond) latency and
-                            this is required for read traffic as evidenced by the need to over-provision reads.
-                            Therefore, DynamoDB DAX would be the best solution for reducing the latency and meeting the
-                            requirements.
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT: Serverless Application Repository </b></td>
+                        <td> <b>Serverless Application Repository</b> is a managed repository for serverless
+                            applications.
                         </td>
 
                     </tr>
                     <tr>
-                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:AWS S3 Transfer Acceleration</b></td>
+                        <th style="background-color: green;">WHY B IS CORRECT?</th>
+                        <td><b>CONCEPT: AWS Serverless Application Model (SAM)</b></td>
                         <td>
-                            This will not reduce the latency of the application. Transfer Acceleration is used for
-                            improving performance of uploads of data to Amazon S3.
+                            <b>AWS Serverless Application Model (SAM)</b> is an open-source framework for building
+                            serverless applications. It provides shorthand syntax to express functions, APIs, databases,
+                            and event source mappings. With just a few lines per resource, you can define the
+                            application you want and model it using YAML. During deployment, SAM transforms and expands
+                            the SAM syntax into AWS CloudFormation syntax, enabling you to build serverless applications
+                            faster.
+                            To get started with building SAM-based applications, use the AWS SAM CLI. SAM CLI provides a
+                            Lambda-like execution environment that lets you locally build, test, and debug applications
+                            defined by SAM templates. You can also use the SAM CLI to deploy your applications to AWS.
+
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT: DynamoDB queries</b></td>
-                        <td>This may reduce the requirement for over-provisioning reads but it
-                            will not solve the problem of reducing latency. With this solution the application
-                            performance will be worse, it’s a case of reducing cost along with performance.
+                        <td><b>CONCEPT: AWS CloudFormation</b></td>
+                        <td>this would not be the simplest way to package and deploy this infrastructure. Without using
+                            SAM, you would need to build out a much more complex AWS CloudFormation template yourself.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: Global Secondary Index (GSI)</b></td>
-                        <td> <b>GSI</b> is used to speed up queries on non-key attributes. There is no requirement here
-                            for a
-                            Global Secondary Index.
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="2">There is two Keywords in Question:
-
-                            <p>1.<b>"Latency"</b> & </p>
-                            <p>1.<b>"Read Capacity"</b></p> of DynamoDB.
-                            <p>& DynamoDB DAX main purpose is to improve latency & thus read capacity of DynamoDB.</p>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color:blueviolet;">References:</th>
-                        <td colspan="2"> <a target="_blank" href="https://aws.amazon.com/dynamodb/dax/">AWS
-                                DOCS</a>
-                        </td>
-                    </tr>
-                </table>
-            </DIV>
-        </div>
-        <div id="start">
-            <h2>
-                <li>An organization has an Amazon S3 bucket containing premier content that they intend to make
-                    available to only paid subscribers of their website. The objects in the S3 bucket are private to
-                    prevent inadvertent exposure of the premier content to non-paying website visitors.
-                    How can the organization provide only paid subscribers the ability to download the premier content
-                    in the S3 bucket?
-            </h2>
-            <br />
-            <input type="radio" name="question4">
-            <label>A. Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3 bucket
-                objects</label><br />
-            <input type="radio" name="question2">
-            <label>B. Enable server-side encryption on the S3 bucket for data protection against the non-paying website
-                visitors</label><br />
-            <input type="radio" id="Correct4" name="question2">
-            <label for="Correct4">C. Generate a pre-signed object URL for the premier content file when a paid
-                subscriber requests a download</label>
-            <br />
-            <input type="radio" name="question2">
-            <label>D. Apply a bucket policy that grants anonymous users to download the content from the S3
-                bucket</label>
-
-            <BUTTON ONCLICK="ShowAndHide4()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
-            <DIV ID="SectionName4" STYLE="display:none">
-                <table>
-                    <tr>
-                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
-                        <td><b>CONCEPT:Bucket Policy with MFA</b></td>
-                        <td>Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3
-                            bucket objects would be very difficult to manage & it won't solve our problem to allow only
-                            paid subscribers.
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
-                        <td><b>CONCEPT:Server-side encryption on the S3 bucket </b></td>
-                        <td>
-                            as this is encryption at rest and S3 will simply unencrypt the objects when users attempt to
-                            read them. This provides privacy protection for data at rest but does not restrict access.
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: green;">WHY C IS CORRECT?</th>
-                        <td><b>CONCEPT: S3 pre-signed object URL</b></td>
-                        <td>
-                            <p>
-                                When Amazon S3 objects are private, only the object owner has permission to access these
-                                objects. However, the object owner can optionally share objects with others by creating
-                                a
-                                presigned URL, using their own security credentials, to grant time-limited permission to
-                                download the objects.
-                            </p>
-                            <p>
-                                When you create a presigned URL for your object, you must provide your security
-                                credentials,
-                                specify a bucket name, an object key, specify the HTTP method (GET to download the
-                                object)
-                                and expiration date and time. The presigned URLs are valid only for the specified
-                                duration.
-                            </p>
-                            <p>
-                                Anyone who receives the presigned URL can then access the object. In this scenario, a
-                                pre-signed URL can be generated only for paying customers and they will be the only
-                                website
-                                visitors who can view the premier content.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: Bucket policy that grants anonymous users </b></td>
-                        <td> This would provide everyone the ability to download the content.</b>.
+                        <td><b>CONCEPT: AWS Elastic Beanstalk</b></td>
+                        <td> <b>Elastic Beanstalk</b> cannot be used to deploy Lambda, API Gateway or DynamoDB.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
                         <td colspan="2">There is one Keyword in Question:
 
-                            <p>1.<b>"make available to only paid subscribers"</b> which redirect us to option C as in
-                                this scenario, a pre-signed URL can be generated only for paying customers and they will
-                                be the only website visitors who can view the premier content.
+
+                            <p>1.<b>"Read the EASIEST way to deploy the application using simple syntax"</b> clearly
+                                indicates AWS Serverless Application Model (SAM) as it is made for this purpose only &
+                                easy one.</p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td colspan="2"> <a target="_blank" href="https://aws.amazon.com/serverless/sam/">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>A team of Developers require access to an AWS account that is a member account in AWS Organizations.
+                    The administrator of the master account needs to restrict the AWS services, resources, and API
+                    actions that can be accessed by the users in the account.
+                    What should the administrator create?
+
+            </h2>
+            <br />
+            <input type="radio" name="question4">
+            <label>A. An Organizational Unit</label><br />
+            <input type="radio" name="question2">
+            <label>B. A Service Control Policy (SCP)</label><br />
+            <input type="radio" id="Correct4" name="question2">
+            <label for="Correct4">C. A Tag Policy</label>
+            <br />
+            <input type="radio" name="question2">
+            <label>D. A Consolidated Billing account</label>
+
+            <BUTTON ONCLICK="ShowAndHide4()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName4" STYLE="display:none">
+                <table>
+                    <tr>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:An Organizational Unit</b></td>
+                        <td>this is used to group accounts for administration.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: green;">WHY B IS CORRECT?</th>
+                        <td><b>CONCEPT: A Service Control Policy (SCP)</b></td>
+                        <td>
+                            <p>
+                                As an administrator of the master account of an organization, you can use service
+                                control
+                                policies (SCPs) to specify the maximum permissions for member accounts in the
+                                organization.
+                            </p>
+                            <p>
+                                In SCPs, you can restrict which AWS services, resources, and individual API actions the
+                                users and roles in each member account can access. You can also define conditions for
+                                when
+                                to restrict access to AWS services, resources, and API actions.
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT: A Tag Policy</b></td>
+                        <td>
+                            <p>
+                                these are used to maintain consistent tags, including the preferred case treatment of
+                                tag keys and tag values.
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT: Consolidated billing </b></td>
+                        <td> <b>Consolidated billing</b> is not related to controlling access to resources within an
+                            account.</b>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td colspan="2">It is a defination question, You have to learn defination of SCP
                         </td>
 
                     <tr>
@@ -951,71 +938,51 @@
         </div>
         <div id="start">
             <h2>
-                <li>A Development team manage a hybrid cloud environment. They would like to collect system-level
-                    metrics from on-premises servers and Amazon EC2 instances. How can the Development team collect this
-                    information MOST efficiently?
+                <li>A company is running an order processing system on AWS. Amazon SQS is used to queue orders and an
+                    AWS Lambda function processes them. The company recently started noticing a lot of orders are
+                    failing to process.
+                    How can a Developer MOST effectively manage these failures to debug the failed orders later and
+                    reprocess them, as necessary?
+
             </h2>
             <br />
             <input type="radio" name="question5">
-            <label>A. Use CloudWatch detailed monitoring for both EC2 instances and on-premises servers</label><br />
+            <label>A. Publish failed orders from the order queue to an Amazon SNS topic</label><br />
             <input type="radio" id="Correct5" name="question2">
-            <label for="Correct5">B. Install the CloudWatch agent on the on-premises servers and EC2
-                instances</label><br />
+            <label for="Correct5">B. Log the failed orders from the order queue using Amazon CloudWatch Logs</label><br />
             <input type="radio" name="question2">
-            <label>C. Install the CloudWatch agent on the EC2 instances and use a cron job on the on-premises
-                servers</label>
+            <label>C. Send failed orders from the order queue to AWS CloudTrail logs</label>
             <br />
             <input type="radio" name="question2">
-            <label>D. Use CloudWatch for monitoring EC2 instances and custom AWS CLI scripts using the put-metric-data
-                API</label>
+            <label>D. Implement dead-letter queues for failed orders from the order queue</label>
 
             <BUTTON ONCLICK="ShowAndHide5()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName5" STYLE="display:none">
                 <table>
                     <tr>
                         <th style="background-color: red;">WHY A IS INCORRECT?</th>
-                        <td><b>CONCEPT:CloudWatch detailed monitoring</b></td>
-                        <td>This would not do anything for the on-premises instances.
-                            By default, your instance is enabled for basic monitoring. You can optionally enable
-                            detailed monitoring. After you enable detailed monitoring, the Amazon EC2 console displays
-                            monitoring graphs with a 1-minute period for the instance.<br>
-                            <b>Basic monitoring</b><br>
-                            Data is available automatically in 5-minute periods at no charge.<br>
-
-                            <b>Detailed monitoring</b><br>
-                            Data is available in 1-minute periods for an additional charge.<br>
+                        <td><b>CONCEPT: Amazon SNS topic</b></td>
+                        <td>There is no way to isolate messages that have failed to process when subscribing an SQS queue to an SNS topic.
                         </td>
                     </tr>
                     <tr>
-                        <th style="background-color: green;">WHY B IS CORRECT?</th>
-                        <td><b>CONCEPT:CloudWatch agent </b></td>
-                        <td>The unified CloudWatch agent can be installed on both on-premises servers and Amazon EC2
-                            instances using multiple operating system versions. It enables you to do the following:<br>
-                            • Collect more system-level metrics from Amazon EC2 instances across operating systems. The
-                            metrics can include in-guest metrics, in addition to the metrics for EC2 instances.<br>
-                            • Collect system-level metrics from on-premises servers. These can include servers in a
-                            hybrid environment as well as servers not managed by AWS.<br>
-                            • Retrieve custom metrics from your applications or services using the StatsD and collectd
-                            protocols.<br>
-                            • Collect logs from Amazon EC2 instances and on-premises servers, running either Linux or
-                            Windows Server.<br>
-                            <p>Therefore, the Development team should install the CloudWatch agent on the on-premises
-                                servers and EC2 instances. This will allow them to collect system-level metrics from
-                                servers and instances across the hybrid cloud environment.</p>
-
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT: Amazon CloudWatch Logs </b></td>
+                        <td>SQS does not publish message success/failure to CloudWatch Logs.
                         </td>
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT: CloudWatch agent and cron job</b></td>
-                        <td>It is incorrect as the answer does not even specify what the cron job is going to do / use
-                            for gathering and sending the data.</td>
+                        <td><b>CONCEPT: AWS CloudTrail logs</b></td>
+                        <td><b>CloudTrail</b> records API activity not performance metrics or logs.</td>
                     </tr>
                     <tr>
-                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
-                        <td><b>CONCEPT: CloudWatch and custom AWS CLI scripts</b></td>
-                        <td> This is not the most efficient option as you must write and maintain custom scripts. It is
-                            better to use the CloudWatch agent as it provides all the functionality required.</b>.
+                        <th style="background-color: green;">WHY D IS CORRECT?</th>
+                        <td><b>CONCEPT: dead-letter queues</b></td>
+                        <td> Amazon SQS supports <b>dead-letter queues</b>, which other queues (source queues) can target for messages that can't be processed (consumed) successfully. Dead-letter queues are useful for debugging your application or messaging system because they let you isolate problematic messages to determine why their processing doesn't succeed.
+
+                            The Developer should therefore implement dead-letter queues for failed orders from the order queue. This will allow full debugging as the entire message is available for analysis.
+                            
                         </td>
                     </tr>
                     <tr>
