@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+    <title>AWS Certified Devloper Questions & Answers</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+    <style>
+        p {
+            padding-left: 3%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .mode {
+            padding-right: 30px;
+            margin-top: 12px;
+            float: right;
+
+        }
+
+        .change {
+            cursor: pointer;
+            border: 1px solid #555;
+            border-radius: 40%;
+            width: 20px;
+            text-align: center;
+            padding: 5px;
+            margin-left: 8px;
+        }
+
+        .dark {
+            background-color: #222;
+            color: #e6e6e6;
+        }
+
+        .checkbox {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .label {
+            background-color: #111;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            position: relative;
+            height: 5px;
+            width: 28px;
+            transform: scale(1.5);
+        }
+
+        .label .ball {
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            height: 12px;
+            width: 13px;
+            transform: translateX(0px);
+            transition: transform 0.2s linear;
+        }
+
+        .checkbox:checked+.label .ball {
+            transform: translateX(19px);
+        }
+
+        li {
+
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+
+        option {
+            color: rgb(251, 253, 251);
+        }
+
+        input[type=radio]+option {
+            display: inline-block;
+            width: 95%;
+            background-color: rgb(0, 0, 0);
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        input[type=radio]+option:hover {
+            border: 1px solid #000000;
+            background-color: rgb(200, 192, 194);
+        }
+
+        input[type=radio]:checked+option {
+            background-image: none;
+            background-color: #0C0;
+            color: #fff;
+            border: 1px solid #0C0 !important;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .worngans {
+            background-color: #F36;
+            color: #fff;
+            border: 1px solid #F36 !important;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+
+        input[type=radio]+label {
+            display: inline-block;
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        input[type=radio]+label:hover {
+            border: 2px solid #777;
+            text-emphasis-color: black;
+            font-size: 16px;
+        }
+
+        input[type=radio]:checked+label {
+            background-image: none;
+            background-color: #0C0;
+            color: #fff;
+            font-weight: bold;
+            border: 1px solid #0C0 !important;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .worngans {
+            background-color: rgb(255, 0, 0);
+            color: #fff;
+            border: 1px solid #F36 !important;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn1 {
+            padding: 8px 20px;
+            margin: 5px 10px;
+            border: 2px solid rgb(114, 50, 50);
+            font-size: large;
+            border-radius: 8px;
+            color: rgb(114, 50, 50);
+            background: none;
+            cursor: pointer;
+        }
+
+        .btn1:hover {
+            color: rgb(58, 173, 64);
+            border: 2px solid rgb(94, 173, 58);
+        }
+
+        .disable-select {
+            user-select: none;
+
+        }
+
+        #darkbtn {
+            transition: 0.3s;
+        }
+
+        #darkball {
+            transition: 0.3s;
+        }
+
+        #header12 {
+            background-color: #f1f1f1;
+            /* Grey background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: center;
+            /* Centered text */
+            font-size: 50px;
+            /* Big font size */
+            font-weight: bold;
+            position: sticky;
+            /* Fixed position - sit on top of the page */
+            height: 80px;
+
+            width: 100%;
+            /* Full width */
+            transition: 0.2s;
+            /* Add a transition effect (when scrolling - and font size is decreased) */
+        }
+
+        #start {
+            padding-top: 80px;
+            padding-left: 50px;
+            padding-right: 40px;
+        }
+
+        /* table {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-collapse: seperate;
+            width: 100%;
+            border-radius: 50%;
+            border: solid black 1px;
+            border-radius: 6px;
+            -moz-border-radius: 6px;
+        }
+
+        td,
+        th {
+            text-align: left;
+            font-size: large;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+            padding: 10px 10px 10px 10px;
+            vertical-align: top;
+            text-align: left;
+            font-size: large;
+            border-left: solid black 1px;
+            border-top: solid black 1px;
+        }
+
+        td:first-child,
+        th:first-child {
+            border-left: none;
+        } */
+
+        /* tr:nth-child(odd) {
+            background-color: rgb(83, 100, 83);
+        } */
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+
+            table-layout: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table tr {
+
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table td {
+
+            border: 1px solid #ddd;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+
+        }
+
+        table th {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            /* 
+  table caption {
+    font-size: 1.3em;
+  }
+   */
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table th {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+
+                text-align: center;
+            }
+
+            table td::before {
+                /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        /* The sticky class is added to the header with JS when it reaches its scroll position */
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%
+        }
+
+        /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+        .sticky+.content {
+            padding-top: 102px;
+        }
+
+        .resp-sharing-button__link,
+        .resp-sharing-button__icon {
+            display: inline-block
+        }
+
+        .resp-sharing-button__link {
+            text-decoration: none;
+            color: #fff;
+            margin: 0.5em
+        }
+
+        .resp-sharing-button {
+            border-radius: 5px;
+            transition: 25ms ease-out;
+            padding: 0.5em 0.75em;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+        }
+
+        .resp-sharing-button__icon svg {
+            width: 1em;
+            height: 1em;
+            margin-right: 0.4em;
+            vertical-align: top
+        }
+
+        .resp-sharing-button--small svg {
+            margin: 0;
+            vertical-align: middle
+        }
+
+        /* Non solid icons get a stroke */
+        .resp-sharing-button__icon {
+            stroke: #fff;
+            fill: none
+        }
+
+        /* Solid icons get a fill */
+        .resp-sharing-button__icon--solid,
+        .resp-sharing-button__icon--solidcircle {
+            fill: #fff;
+            stroke: none
+        }
+
+        .resp-sharing-button--twitter {
+            background-color: #55acee
+        }
+
+        .resp-sharing-button--twitter:hover {
+            background-color: #2795e9
+        }
+
+        .resp-sharing-button--pinterest {
+            background-color: #bd081c
+        }
+
+        .resp-sharing-button--pinterest:hover {
+            background-color: #8c0615
+        }
+
+        .resp-sharing-button--facebook {
+            background-color: #3b5998
+        }
+
+        .resp-sharing-button--facebook:hover {
+            background-color: #2d4373
+        }
+
+        .resp-sharing-button--tumblr {
+            background-color: #35465C
+        }
+
+        .resp-sharing-button--tumblr:hover {
+            background-color: #222d3c
+        }
+
+        .resp-sharing-button--reddit {
+            background-color: #5f99cf
+        }
+
+        .resp-sharing-button--reddit:hover {
+            background-color: #3a80c1
+        }
+
+        .resp-sharing-button--google {
+            background-color: #dd4b39
+        }
+
+        .resp-sharing-button--google:hover {
+            background-color: #c23321
+        }
+
+        .resp-sharing-button--linkedin {
+            background-color: #0077b5
+        }
+
+        .resp-sharing-button--linkedin:hover {
+            background-color: #046293
+        }
+
+        .resp-sharing-button--email {
+            background-color: #777
+        }
+
+        .resp-sharing-button--email:hover {
+            background-color: #5e5e5e
+        }
+
+        .resp-sharing-button--xing {
+            background-color: #1a7576
+        }
+
+        .resp-sharing-button--xing:hover {
+            background-color: #114c4c
+        }
+
+        .resp-sharing-button--whatsapp {
+            background-color: #25D366
+        }
+
+        .resp-sharing-button--whatsapp:hover {
+            background-color: #1da851
+        }
+
+        .resp-sharing-button--hackernews {
+            background-color: #FF6600
+        }
+
+        .resp-sharing-button--hackernews:hover,
+        .resp-sharing-button--hackernews:focus {
+            background-color: #FB6200
+        }
+
+        .resp-sharing-button--vk {
+            background-color: #507299
+        }
+
+        .resp-sharing-button--vk:hover {
+            background-color: #43648c
+        }
+
+        .resp-sharing-button--facebook {
+            background-color: #3b5998;
+            border-color: #3b5998;
+        }
+
+        .resp-sharing-button--facebook:hover,
+        .resp-sharing-button--facebook:active {
+            background-color: #2d4373;
+            border-color: #2d4373;
+        }
+
+        .resp-sharing-button--email {
+            background-color: #777777;
+            border-color: #777777;
+        }
+
+        .resp-sharing-button--email:hover,
+        .resp-sharing-button--email:active {
+            background-color: #5e5e5e;
+            border-color: #5e5e5e;
+        }
+
+        .resp-sharing-button--pinterest {
+            background-color: #bd081c;
+            border-color: #bd081c;
+        }
+
+        .resp-sharing-button--pinterest:hover,
+        .resp-sharing-button--pinterest:active {
+            background-color: #8c0615;
+            border-color: #8c0615;
+        }
+
+        .resp-sharing-button--linkedin {
+            background-color: #0077b5;
+            border-color: #0077b5;
+        }
+
+        .resp-sharing-button--linkedin:hover,
+        .resp-sharing-button--linkedin:active {
+            background-color: #046293;
+            border-color: #046293;
+        }
+
+        .resp-sharing-button--reddit {
+            background-color: #5f99cf;
+            border-color: #5f99cf;
+        }
+
+        .resp-sharing-button--reddit:hover,
+        .resp-sharing-button--reddit:active {
+            background-color: #3a80c1;
+            border-color: #3a80c1;
+        }
+
+        .resp-sharing-button--whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+        }
+
+        .resp-sharing-button--whatsapp:hover,
+        .resp-sharing-button--whatsapp:active {
+            background-color: #1DA851;
+            border-color: #1DA851;
+        }
+
+        .resp-sharing-button--telegram {
+            background-color: #54A9EB;
+        }
+
+        .resp-sharing-button--telegram:hover {
+            background-color: #4B97D1;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
+    <!-- Header Scripts Starts -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = '../views/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
+    <meta name="description" content="AWS Questions & Answers Page 2
+ with correct explanation.Most Popular among AWS Community">
+    <!-- Header Scripts Ends -->
+</head>
+
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
+    <div data-include="header"></div>
+
+    <div id="header12">AWS Developer Quiz-3
+
+        <div class="mode">
+
+            <input type="checkbox" class="checkbox" id="chk" class="change" />
+
+            <label class="label" for="chk" id="darkbtn">
+                <div class="ball" id="darkball"></div>
+            </label>
+        </div>
+    </div>
+
+    <ol>
+        <div id="start">
+            <h2>
+                <li>A developer is creating a new application that will store data in a DynamoDB table. Which APIs can
+                    be used to read, write and modify individual items in the table?
+
+
+
+
+            </h2>
+            <br />
+            <input type="radio" name="question1">
+            <label>A. BatchGetItem, BatchWriteItem, UpdateItem</label><br />
+            <input type="radio" name="question1">
+            <label>B. GetItem, PutItem, DeleteItem</label><br />
+            <input type="radio" name="question1">
+            <label>C. GetItem, TransactWriteItems, UpdateTable</label> <br />
+            <input type="radio" id="Correct" name="question1">
+            <label for="Correct">D. GetItem, PutItem, UpdateItem</label>
+
+            <BUTTON ONCLICK="ShowAndHide()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName" STYLE="display:none">
+                <table>
+
+                    <tr>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT: BatchGetItem & BatchWriteItem</b></td>
+                        <td colspan="2"><b>BatchGetItem</b> and <b>BatchWriteItem</b> are used when you have multiple
+                            items to read/write. In this
+                            scenario we are updating individual items.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT: DeleteItem</b></td>
+                        <td colspan="2">
+
+                            <b>DeleteItem</b> will delete single items in a table by primary key. We do not want to
+                            delete, we
+                            want to modify so UpdateItem should be used instead.
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT: TransactWriteItems</b></td>
+                        <td colspan="2"><b>TransactWriteItems</b> is a synchronous write operation that groups up to 25
+                            action
+                            requests. In this scenario we are updating individual items.or Tasks.
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: green;">WHY D IS CORRECT?</th>
+                        <td><b>CONCEPT: GetItem, PutItem, UpdateItem</b></td>
+                        <td>
+                            <p>
+                                <b>GetItem</b> operation returns a set of attributes for the item with the given primary
+                                key.
+                                If there is no matching item, GetItem does not return any data and there will be no Item
+                                element in the response.
+                            </p>
+
+
+                            <p>
+                                <b>PutItem</b> creates a new item or replaces an old item with a new item. If an item
+                                that has the
+                                same primary key as the new item already exists in the specified table, the new item
+                                completely replaces the existing item.
+                            </p>
+
+                            <p>
+                                <b>UpdateItem</b> edits an existing item’s attributes or adds a new item to the table if
+                                it does
+                                not already exist. You can put, delete, or add attribute values. You can also perform a
+                                conditional update on an existing item
+                            </p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td colspan="3">There is two Keywords in Question:
+
+                            <p>1.<b>"Individual items"</b> which clearly denied Batch & Transact Commands, as these are
+                                used for multiple items.</p>
+                            <p>2.<b>"read, write and modify"</b> which clearly denied Delete Command, thus remaining
+                                with only option D.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td colspan="3"> <a target="_blank"
+                                href="https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Operations_Amazon_DynamoDB.html">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>A company is using Amazon CloudFront to provide low-latency access to a web application to its
+                    global users. The organization must encrypt all traffic between users and CloudFront, and all
+                    traffic between CloudFront and the web application.
+                    How can these requirements be met? (Select TWO.)
+                    ?
+            </h2>
+            <br />
+            <input type="radio" id="Correct2" name="question2">
+            <label for="Correct2">A. Amazon ECS with the Fargate launch type</label><br />
+            <input type="radio" id="Correct6" name="question2">
+            <label for="Correct2">B. Amazon ECS with the EC2 launch type</label><br />
+            <input type="radio" name="question2">
+            <label>C. An Amazon ECS Service with Auto Scaling</label> <br />
+            <input type="radio" name="question2">
+            <label>D. An Amazon ECS Cluster with Auto Scaling</label>
+
+            <BUTTON ONCLICK="ShowAndHide2()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName2" STYLE="display:none">
+                <table>
+                    <tr>
+                        <th style="background-color: green;">WHY A IS CORRECT?</th>
+                        <td><b>CONCEPT:Amazon ECS with the Fargate launch type</b></td>
+
+                        <td>With this model AWS charge you for running tasks rather than running container instances.
+                            The Fargate launch type allows you to run your containerized applications without the need
+                            to provision and manage the backend infrastructure. You just register your task definition
+                            and Fargate launches the container for you. The Fargate Launch Type is a serverless
+                            infrastructure managed by AWS.
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT:Amazon ECS with the EC2 launch type</b></td>
+                        <td>
+                            With this launch type you pay for running container instances (EC2 instances).
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT:Amazon ECS Service with Auto Scaling</b></td>
+                        <td>This does not specify the launch type. You can run an ECS Service on the Fargate or EC2
+                            launch types.</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT:Amazon ECS Cluster with Auto Scaling</b></td>
+                        <td>This does not specify the launch type. You can run an ECS Service on the Fargate or EC2
+                            launch types.</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td colspan="2">There are one Keyword in Question:
+
+                            <p>1.<b>"company should be charged per running task"</b> Therefore, the best answer is to
+                                use Amazon ECS with the Fargate launch type as with this model AWS charge you for
+                                running tasks rather than running container instances.
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td colspan="2"> <a target="_blank"
+                                href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>A Development team are creating a financial trading application. The application requires
+                    sub-millisecond latency for processing trading requests. Amazon DynamoDB is used to store the
+                    trading data. During load testing the Development team found that in periods of high utilization the
+                    latency is too high and read capacity must be significantly over-provisioned to avoid throttling.
+                    How can the Developers meet the latency requirements of the application?
+
+
+            </h2>
+            <br />
+            <input type="radio" id="Correct3" name="question3">
+            <label for="Correct3">A. Use Amazon DynamoDB Accelerator (DAX) to cache the data</label><br />
+            <input type="radio" name="question3">
+            <label>B. Store the trading data in Amazon S3 and use Transfer Acceleration</label><br />
+            <input type="radio" name="question3">
+            <label>C. Use exponential backoff in the application code for DynamoDB queries</label>
+            <br />
+            <input type="radio" name="question3">
+            <label>D. Create a Global Secondary Index (GSI) for the trading data</label>
+
+            <BUTTON ONCLICK="ShowAndHide3()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName3" STYLE="display:none">
+                <table>
+                    <tr>
+                        <th style="background-color: green;">WHY A IS CORRECT?</th>
+                        <td><b>CONCEPT:Amazon DynamoDB Accelerator (DAX)</b></td>
+                        <td> <b>Amazon DynamoDB</b> is designed for scale and performance. In most cases, the DynamoDB
+                            response
+                            times can be measured in single-digit milliseconds. However, there are certain use cases
+                            that require response times in microseconds. For these use cases, <b>DynamoDB Accelerator
+                                (DAX)</b>
+                            delivers fast response times for accessing eventually consistent data.
+                            In this scenario the question is calling for sub-millisecond (e.g. microsecond) latency and
+                            this is required for read traffic as evidenced by the need to over-provision reads.
+                            Therefore, DynamoDB DAX would be the best solution for reducing the latency and meeting the
+                            requirements.
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT:AWS S3 Transfer Acceleration</b></td>
+                        <td>
+                            This will not reduce the latency of the application. Transfer Acceleration is used for
+                            improving performance of uploads of data to Amazon S3.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT: DynamoDB queries</b></td>
+                        <td>This may reduce the requirement for over-provisioning reads but it
+                            will not solve the problem of reducing latency. With this solution the application
+                            performance will be worse, it’s a case of reducing cost along with performance.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT: Global Secondary Index (GSI)</b></td>
+                        <td> <b>GSI</b> is used to speed up queries on non-key attributes. There is no requirement here
+                            for a
+                            Global Secondary Index.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td colspan="2">There is two Keywords in Question:
+
+                            <p>1.<b>"Latency"</b> & </p>
+                            <p>1.<b>"Read Capacity"</b></p> of DynamoDB.
+                            <p>& DynamoDB DAX main purpose is to improve latency & thus read capacity of DynamoDB.</p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td colspan="2"> <a target="_blank" href="https://aws.amazon.com/dynamodb/dax/">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>An organization has an Amazon S3 bucket containing premier content that they intend to make
+                    available to only paid subscribers of their website. The objects in the S3 bucket are private to
+                    prevent inadvertent exposure of the premier content to non-paying website visitors.
+                    How can the organization provide only paid subscribers the ability to download the premier content
+                    in the S3 bucket?
+            </h2>
+            <br />
+            <input type="radio" name="question4">
+            <label>A. Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3 bucket
+                objects</label><br />
+            <input type="radio" name="question2">
+            <label>B. Enable server-side encryption on the S3 bucket for data protection against the non-paying website
+                visitors</label><br />
+            <input type="radio" id="Correct4" name="question2">
+            <label for="Correct4">C. Generate a pre-signed object URL for the premier content file when a paid
+                subscriber requests a download</label>
+            <br />
+            <input type="radio" name="question2">
+            <label>D. Apply a bucket policy that grants anonymous users to download the content from the S3
+                bucket</label>
+
+            <BUTTON ONCLICK="ShowAndHide4()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName4" STYLE="display:none">
+                <table>
+                    <tr>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:Bucket Policy with MFA</b></td>
+                        <td>Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3
+                            bucket objects would be very difficult to manage & it won't solve our problem to allow only
+                            paid subscribers.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT:Server-side encryption on the S3 bucket </b></td>
+                        <td>
+                            as this is encryption at rest and S3 will simply unencrypt the objects when users attempt to
+                            read them. This provides privacy protection for data at rest but does not restrict access.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: green;">WHY C IS CORRECT?</th>
+                        <td><b>CONCEPT: S3 pre-signed object URL</b></td>
+                        <td>
+                            <p>
+                                When Amazon S3 objects are private, only the object owner has permission to access these
+                                objects. However, the object owner can optionally share objects with others by creating
+                                a
+                                presigned URL, using their own security credentials, to grant time-limited permission to
+                                download the objects.
+                            </p>
+                            <p>
+                                When you create a presigned URL for your object, you must provide your security
+                                credentials,
+                                specify a bucket name, an object key, specify the HTTP method (GET to download the
+                                object)
+                                and expiration date and time. The presigned URLs are valid only for the specified
+                                duration.
+                            </p>
+                            <p>
+                                Anyone who receives the presigned URL can then access the object. In this scenario, a
+                                pre-signed URL can be generated only for paying customers and they will be the only
+                                website
+                                visitors who can view the premier content.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT: Bucket policy that grants anonymous users </b></td>
+                        <td> This would provide everyone the ability to download the content.</b>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td colspan="2">There is one Keyword in Question:
+
+                            <p>1.<b>"make available to only paid subscribers"</b> which redirect us to option C as in
+                                this scenario, a pre-signed URL can be generated only for paying customers and they will
+                                be the only website visitors who can view the premier content.
+                        </td>
+
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td colspan="3"> <a target="_blank"
+                                href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <div id="start">
+            <h2>
+                <li>A Development team manage a hybrid cloud environment. They would like to collect system-level
+                    metrics from on-premises servers and Amazon EC2 instances. How can the Development team collect this
+                    information MOST efficiently?
+            </h2>
+            <br />
+            <input type="radio" name="question5">
+            <label>A. Use CloudWatch detailed monitoring for both EC2 instances and on-premises servers</label><br />
+            <input type="radio" id="Correct5" name="question2">
+            <label for="Correct5">B. Install the CloudWatch agent on the on-premises servers and EC2
+                instances</label><br />
+            <input type="radio" name="question2">
+            <label>C. Install the CloudWatch agent on the EC2 instances and use a cron job on the on-premises
+                servers</label>
+            <br />
+            <input type="radio" name="question2">
+            <label>D. Use CloudWatch for monitoring EC2 instances and custom AWS CLI scripts using the put-metric-data
+                API</label>
+
+            <BUTTON ONCLICK="ShowAndHide5()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
+            <DIV ID="SectionName5" STYLE="display:none">
+                <table>
+                    <tr>
+                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <td><b>CONCEPT:CloudWatch detailed monitoring</b></td>
+                        <td>This would not do anything for the on-premises instances.
+                            By default, your instance is enabled for basic monitoring. You can optionally enable
+                            detailed monitoring. After you enable detailed monitoring, the Amazon EC2 console displays
+                            monitoring graphs with a 1-minute period for the instance.<br>
+                            <b>Basic monitoring</b><br>
+                            Data is available automatically in 5-minute periods at no charge.<br>
+
+                            <b>Detailed monitoring</b><br>
+                            Data is available in 1-minute periods for an additional charge.<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: green;">WHY B IS CORRECT?</th>
+                        <td><b>CONCEPT:CloudWatch agent </b></td>
+                        <td>The unified CloudWatch agent can be installed on both on-premises servers and Amazon EC2
+                            instances using multiple operating system versions. It enables you to do the following:<br>
+                            • Collect more system-level metrics from Amazon EC2 instances across operating systems. The
+                            metrics can include in-guest metrics, in addition to the metrics for EC2 instances.<br>
+                            • Collect system-level metrics from on-premises servers. These can include servers in a
+                            hybrid environment as well as servers not managed by AWS.<br>
+                            • Retrieve custom metrics from your applications or services using the StatsD and collectd
+                            protocols.<br>
+                            • Collect logs from Amazon EC2 instances and on-premises servers, running either Linux or
+                            Windows Server.<br>
+                            <p>Therefore, the Development team should install the CloudWatch agent on the on-premises
+                                servers and EC2 instances. This will allow them to collect system-level metrics from
+                                servers and instances across the hybrid cloud environment.</p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY C IS INCORRECT?</th>
+                        <td><b>CONCEPT: CloudWatch agent and cron job</b></td>
+                        <td>It is incorrect as the answer does not even specify what the cron job is going to do / use
+                            for gathering and sending the data.</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
+                        <td><b>CONCEPT: CloudWatch and custom AWS CLI scripts</b></td>
+                        <td> This is not the most efficient option as you must write and maintain custom scripts. It is
+                            better to use the CloudWatch agent as it provides all the functionality required.</b>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="background-color:yellowgreen;">Short Trick</th>
+                        <td colspan="2">There are two Keywords in Question:
+
+                            <p>1.<b>"Collect system-level
+                                    metrics from on-premises servers & EC2 instances" </b>&</p>
+                            <p>2.<b>"Most efficiently"</b></p> redirects to
+                            CloudWatch agent can be installed on both on-premises servers and Amazon EC2
+                            instances & it is most efficient also.
+                        </td>
+
+                    <tr>
+                        <th style="background-color:blueviolet;">References:</th>
+                        <td colspan="3"> <a target="_blank"
+                                href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html">AWS
+                                DOCS</a>
+                        </td>
+                    </tr>
+                </table>
+            </DIV>
+        </div>
+        <!-- Sharingbutton Facebook -->
+        <a class="resp-sharing-button__link"
+            href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2"
+            target="_blank" rel="noopener" aria-label="Share on Facebook">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm3.6 11.5h-2.1v7h-3v-7h-2v-2h2V8.34c0-1.1.35-2.82 2.65-2.82h2.35v2.3h-1.4c-.25 0-.6.13-.6.66V9.5h2.34l-.24 2z" />
+                    </svg>
+                </div>Share on Facebook
+            </div>
+        </a>
+
+        <!-- Sharingbutton E-Mail -->
+        <a class="resp-sharing-button__link"
+            href="mailto:?subject=&amp;body=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2" target="_self"
+            rel="noopener" aria-label="Share by E-Mail">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm8 16c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v8z" />
+                        <path
+                            d="M17.9 8.18c-.2-.2-.5-.24-.72-.07L12 12.38 6.82 8.1c-.22-.16-.53-.13-.7.08s-.15.53.06.7l3.62 2.97-3.57 2.23c-.23.14-.3.45-.15.7.1.14.25.22.42.22.1 0 .18-.02.27-.08l3.85-2.4 1.06.87c.1.04.2.1.32.1s.23-.06.32-.1l1.06-.9 3.86 2.4c.08.06.17.1.26.1.17 0 .33-.1.42-.25.15-.24.08-.55-.15-.7l-3.57-2.22 3.62-2.96c.2-.2.24-.5.07-.72z" />
+                    </svg>
+                </div>Share by E-Mail
+            </div>
+        </a>
+
+        <!-- Sharingbutton Pinterest -->
+        <a class="resp-sharing-button__link"
+            href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2&amp;media=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2&amp;description="
+            target="_blank" rel="noopener" aria-label="Share on Pinterest">
+            <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm1.4 15.56c-1 0-1.94-.53-2.25-1.14l-.65 2.52c-.4 1.45-1.57 2.9-1.66 3-.06.1-.2.07-.22-.04-.02-.2-.32-2 .03-3.5l1.18-5s-.3-.6-.3-1.46c0-1.36.8-2.37 1.78-2.37.85 0 1.25.62 1.25 1.37 0 .85-.53 2.1-.8 3.27-.24.98.48 1.78 1.44 1.78 1.73 0 2.9-2.24 2.9-4.9 0-2-1.35-3.5-3.82-3.5-2.8 0-4.53 2.07-4.53 4.4 0 .5.1.9.25 1.23l-1.5.82c-.36-.64-.54-1.43-.54-2.28 0-2.6 2.2-5.74 6.57-5.74 3.5 0 5.82 2.54 5.82 5.27 0 3.6-2 6.3-4.96 6.3z" />
+                    </svg>
+                </div>Share on Pinterest
+            </div>
+        </a>
+
+        <!-- Sharingbutton LinkedIn -->
+        <a class="resp-sharing-button__link"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2&amp;title=&amp;summary=&amp;source=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2"
+            target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"
+                        enable-background="new 0 0 24 24" xml:space="preserve">
+                        <path
+                            d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12s12-5.383,12-12S18.617,0,12,0z M9.5,16.5h-2v-7h2V16.5z M8.5,7.5 c-0.553,0-1-0.448-1-1c0-0.552,0.447-1,1-1s1,0.448,1,1C9.5,7.052,9.053,7.5,8.5,7.5z M18.5,16.5h-3V13c0-0.277-0.225-0.5-0.5-0.5 c-0.276,0-0.5,0.223-0.5,0.5v3.5h-3c0,0,0.031-6.478,0-7h3v0.835c0,0,0.457-0.753,1.707-0.753c1.55,0,2.293,1.12,2.293,3.296V16.5z" />
+                    </svg>
+                </div>Share on LinkedIn
+            </div>
+        </a>
+
+        <!-- Sharingbutton Reddit -->
+        <a class="resp-sharing-button__link"
+            href="https://reddit.com/submit/?url=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2&amp;resubmit=true&amp;title="
+            target="_blank" rel="noopener" aria-label="Share on Reddit">
+            <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="9.391" cy="13.392" r=".978" />
+                        <path
+                            d="M14.057 15.814c-1.14.66-2.987.655-4.122-.004-.238-.138-.545-.058-.684.182-.13.24-.05.545.19.685.72.417 1.63.646 2.568.646.93 0 1.84-.228 2.558-.642.24-.13.32-.44.185-.68-.14-.24-.445-.32-.683-.18zM5 12.086c0 .41.23.78.568.978.27-.662.735-1.264 1.353-1.774-.2-.207-.48-.334-.79-.334-.62 0-1.13.507-1.13 1.13z" />
+                        <path
+                            d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm6.673 14.055c.01.104.022.208.022.314 0 2.61-3.004 4.73-6.695 4.73s-6.695-2.126-6.695-4.74c0-.105.013-.21.022-.313C4.537 13.73 4 12.97 4 12.08c0-1.173.956-2.13 2.13-2.13.63 0 1.218.29 1.618.757 1.04-.607 2.345-.99 3.77-1.063.057-.803.308-2.33 1.388-2.95.633-.366 1.417-.323 2.322.085.302-.81 1.076-1.397 1.99-1.397 1.174 0 2.13.96 2.13 2.13 0 1.177-.956 2.133-2.13 2.133-1.065 0-1.942-.79-2.098-1.81-.734-.4-1.315-.506-1.716-.276-.6.346-.818 1.395-.88 2.087 1.407.08 2.697.46 3.728 1.065.4-.468.987-.756 1.617-.756 1.17 0 2.13.953 2.13 2.13 0 .89-.54 1.65-1.33 1.97z" />
+                        <circle cx="14.609" cy="13.391" r=".978" />
+                        <path
+                            d="M17.87 10.956c-.302 0-.583.128-.79.334.616.51 1.082 1.112 1.352 1.774.34-.197.568-.566.568-.978 0-.623-.507-1.13-1.13-1.13z" />
+                    </svg>
+                </div>Share on Reddit
+            </div>
+        </a>
+
+        <!-- Sharingbutton WhatsApp -->
+        <a class="resp-sharing-button__link"
+            href="whatsapp://send?text=%20https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2" target="_blank"
+            rel="noopener" aria-label="Share on WhatsApp">
+            <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+                        <path
+                            d="m12 0c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12zm0 3.8c2.2 0 4.2 0.9 5.7 2.4 1.6 1.5 2.4 3.6 2.5 5.7 0 4.5-3.6 8.1-8.1 8.1-1.4 0-2.7-0.4-3.9-1l-4.4 1.1 1.2-4.2c-0.8-1.2-1.1-2.6-1.1-4 0-4.5 3.6-8.1 8.1-8.1zm0.1 1.5c-3.7 0-6.7 3-6.7 6.7 0 1.3 0.3 2.5 1 3.6l0.1 0.3-0.7 2.4 2.5-0.7 0.3 0.099c1 0.7 2.2 1 3.4 1 3.7 0 6.8-3 6.9-6.6 0-1.8-0.7-3.5-2-4.8s-3-2-4.8-2zm-3 2.9h0.4c0.2 0 0.4-0.099 0.5 0.3s0.5 1.5 0.6 1.7 0.1 0.2 0 0.3-0.1 0.2-0.2 0.3l-0.3 0.3c-0.1 0.1-0.2 0.2-0.1 0.4 0.2 0.2 0.6 0.9 1.2 1.4 0.7 0.7 1.4 0.9 1.6 1 0.2 0 0.3 0.001 0.4-0.099s0.5-0.6 0.6-0.8c0.2-0.2 0.3-0.2 0.5-0.1l1.4 0.7c0.2 0.1 0.3 0.2 0.5 0.3 0 0.1 0.1 0.5-0.099 1s-1 0.9-1.4 1c-0.3 0-0.8 0.001-1.3-0.099-0.3-0.1-0.7-0.2-1.2-0.4-2.1-0.9-3.4-3-3.5-3.1s-0.8-1.1-0.8-2.1c0-1 0.5-1.5 0.7-1.7s0.4-0.3 0.5-0.3z" />
+                    </svg>
+                </div>Share on WhatsApp
+            </div>
+        </a>
+
+        <!-- Sharingbutton Telegram -->
+        <a class="resp-sharing-button__link"
+            href="https://telegram.me/share/url?text=&amp;url=https%3A%2F%2Fkaustubhsharma.com%2FQuizzes%2Fquiz2"
+            target="_blank" rel="noopener" aria-label="Share on Telegram">
+            <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--large">
+                <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 23.5c6.35 0 11.5-5.15 11.5-11.5S18.35.5 12 .5.5 5.65.5 12 5.65 23.5 12 23.5zM2.505 11.053c-.31.118-.505.738-.505.738s.203.62.513.737l3.636 1.355 1.417 4.557a.787.787 0 0 0 1.25.375l2.115-1.72a.29.29 0 0 1 .353-.01L15.1 19.85a.786.786 0 0 0 .746.095.786.786 0 0 0 .487-.573l2.793-13.426a.787.787 0 0 0-1.054-.893l-15.568 6z"
+                            fill-rule="evenodd" />
+                    </svg>
+                </div>Share on Telegram
+            </div>
+        </a>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('label').click(function () {
+                    $('label').removeClass('worngans');
+                    $(this).addClass('worngans');
+                });
+
+            });
+
+        </script>
+        <SCRIPT>
+            function ShowAndHide() {
+                var x = document.getElementById('SectionName');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide2() {
+                var x = document.getElementById('SectionName2');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide3() {
+                var x = document.getElementById('SectionName3');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide4() {
+                var x = document.getElementById('SectionName4');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide5() {
+                var x = document.getElementById('SectionName5');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide6() {
+                var x = document.getElementById('SectionName6');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide6() {
+                var x = document.getElementById('SectionName6');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide7() {
+                var x = document.getElementById('SectionName7');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide8() {
+                var x = document.getElementById('SectionName8');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide9() {
+                var x = document.getElementById('SectionName9');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+            function ShowAndHide10() {
+                var x = document.getElementById('SectionName10');
+                if (x.style.display == 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+
+        </SCRIPT>
+        <script>
+            chk.addEventListener('change', () => {
+                document.body.classList.toggle('dark');
+            });
+        </script>
+        <script>// Try using right-click on the preview page. This script disables that functionality.
+            window.addEventListener('contextmenu', function (e) {
+
+                e.preventDefault();
+            }, false);</script>
+
+
+        <footer class="background">
+            <p class="text-footer">
+                Copyright &copy; by KAUSTUBH SHARMA 2021 -All rights reserved
+            </p>
+        </footer>
+        <script src="../JS/responsive.js"></script>
+
+</body>
+
+</html>
