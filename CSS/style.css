@@ -87,11 +87,11 @@ html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin:auto;
     max-width: 50%;
-    height:80%
+    height:100%
 }
 
 .firstSection{
-    height: 100vh;
+    height: 58vh;
 }
 
 .firstHalf{
