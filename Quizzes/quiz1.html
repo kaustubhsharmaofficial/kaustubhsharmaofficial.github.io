@@ -629,7 +629,7 @@
                 <table>
 
                     <tr>
-                        <th style="background-color: red;">WHY A IS INCORRECT?</th>
+                        <th style="background-color: green;">WHY A IS CORRECT?</th>
                         <td><b>CONCEPT: GetSessionToken</b></td>
                         <td colspan="2">The GetSessionToken API call returns a set of temporary credentials for an AWS
                             account or IAM user. The credentials consist of an access key ID, a secret access key, and a
@@ -654,27 +654,29 @@
                         <td><b>CONCEPT: GetCallerIdentity</b></td>
                         <td colspan="2"><b>GetCallerIdentity</b> action returns details about the IAM user or role whose
                             credentials are used to call the operation.
-                            requests. In this scenario we are updating individual items.or Tasks.
+
 
                         </td>
                     </tr>
                     <tr>
-                        <th style="background-color: green;">WHY D IS CORRECT?</th>
+                        <th style="background-color: red;">WHY D IS INCORRECT?</th>
                         <td><b>CONCEPT: GetFederationToken</b></td>
                         <td>
-                            <p>
-                                <b>GetFederationToken</b> is used with federated users to return a set of temporary
-                                security
-                                credentials (consisting of an access key ID, a secret access key, and a security token).
-                            </p>
+
+                            <b>GetFederationToken</b> is used with federated users to return a set of temporary
+                            security
+                            credentials (consisting of an access key ID, a secret access key, and a security token).
+
                         </td>
 
                     </tr>
                     <tr>
                         <th style="background-color:yellowgreen;">Short Trick</th>
-                        <td colspan="3">There is one Keyword in Question:
+                        <td colspan="3">There is two Keyword in Question:
+                            <p>1.<b>"IAM user credentials used by the
+                                application"</b> & only option GetSessionToken & GetFederationToken are able to return security credentials. </p>
 
-                            <p>1.<b>"multi-factor authentication protected APIs"</b> which can be possible with
+                            <p>2.<b>"multi-factor authentication protected APIs"</b> which is a genral practice with
                                 GetSessionToken.</p>
 
                         </td>
