@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        a {
+            color: blue;
+        }
+    </style>
+    <!-- Sharing button Css -->
+    <style type="text/css">
+        .resp-sharing-button__link,
+        .resp-sharing-button__icon {
+            display: inline-block
+        }
+
+        .resp-sharing-button__link {
+            text-decoration: none;
+            color: #fff;
+            margin: 0.5em
+        }
+
+        .resp-sharing-button {
+            border-radius: 5px;
+            transition: 25ms ease-out;
+            padding: 0.5em 0.75em;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+        }
+
+        .resp-sharing-button__icon svg {
+            width: 1em;
+            height: 1em;
+            margin-right: 0.4em;
+            vertical-align: top
+        }
+
+        .resp-sharing-button--small svg {
+            margin: 0;
+            vertical-align: middle
+        }
+
+        /* Non solid icons get a stroke */
+        .resp-sharing-button__icon {
+            stroke: #fff;
+            fill: none
+        }
+
+        /* Solid icons get a fill */
+        .resp-sharing-button__icon--solid,
+        .resp-sharing-button__icon--solidcircle {
+            fill: #fff;
+            stroke: none
+        }
+
+        .resp-sharing-button--twitter {
+            background-color: #55acee
+        }
+
+        .resp-sharing-button--twitter:hover {
+            background-color: #2795e9
+        }
+
+        .resp-sharing-button--pinterest {
+            background-color: #bd081c
+        }
+
+        .resp-sharing-button--pinterest:hover {
+            background-color: #8c0615
+        }
+
+        .resp-sharing-button--facebook {
+            background-color: #3b5998
+        }
+
+        .resp-sharing-button--facebook:hover {
+            background-color: #2d4373
+        }
+
+        .resp-sharing-button--tumblr {
+            background-color: #35465C
+        }
+
+        .resp-sharing-button--tumblr:hover {
+            background-color: #222d3c
+        }
+
+        .resp-sharing-button--reddit {
+            background-color: #5f99cf
+        }
+
+        .resp-sharing-button--reddit:hover {
+            background-color: #3a80c1
+        }
+
+        .resp-sharing-button--google {
+            background-color: #dd4b39
+        }
+
+        .resp-sharing-button--google:hover {
+            background-color: #c23321
+        }
+
+        .resp-sharing-button--linkedin {
+            background-color: #0077b5
+        }
+
+        .resp-sharing-button--linkedin:hover {
+            background-color: #046293
+        }
+
+        .resp-sharing-button--email {
+            background-color: #777
+        }
+
+        .resp-sharing-button--email:hover {
+            background-color: #5e5e5e
+        }
+
+        .resp-sharing-button--xing {
+            background-color: #1a7576
+        }
+
+        .resp-sharing-button--xing:hover {
+            background-color: #114c4c
+        }
+
+        .resp-sharing-button--whatsapp {
+            background-color: #25D366
+        }
+
+        .resp-sharing-button--whatsapp:hover {
+            background-color: #1da851
+        }
+
+        .resp-sharing-button--hackernews {
+            background-color: #FF6600
+        }
+
+        .resp-sharing-button--hackernews:hover,
+        .resp-sharing-button--hackernews:focus {
+            background-color: #FB6200
+        }
+
+        .resp-sharing-button--vk {
+            background-color: #507299
+        }
+
+        .resp-sharing-button--vk:hover {
+            background-color: #43648c
+        }
+
+        .resp-sharing-button--facebook {
+            background-color: #3b5998;
+            border-color: #3b5998;
+        }
+
+        .resp-sharing-button--facebook:hover,
+        .resp-sharing-button--facebook:active {
+            background-color: #2d4373;
+            border-color: #2d4373;
+        }
+
+        .resp-sharing-button--email {
+            background-color: #777777;
+            border-color: #777777;
+        }
+
+        .resp-sharing-button--email:hover,
+        .resp-sharing-button--email:active {
+            background-color: #5e5e5e;
+            border-color: #5e5e5e;
+        }
+
+        .resp-sharing-button--pinterest {
+            background-color: #bd081c;
+            border-color: #bd081c;
+        }
+
+        .resp-sharing-button--pinterest:hover,
+        .resp-sharing-button--pinterest:active {
+            background-color: #8c0615;
+            border-color: #8c0615;
+        }
+
+        .resp-sharing-button--linkedin {
+            background-color: #0077b5;
+            border-color: #0077b5;
+        }
+
+        .resp-sharing-button--linkedin:hover,
+        .resp-sharing-button--linkedin:active {
+            background-color: #046293;
+            border-color: #046293;
+        }
+
+        .resp-sharing-button--reddit {
+            background-color: #5f99cf;
+            border-color: #5f99cf;
+        }
+
+        .resp-sharing-button--reddit:hover,
+        .resp-sharing-button--reddit:active {
+            background-color: #3a80c1;
+            border-color: #3a80c1;
+        }
+
+        .resp-sharing-button--whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+        }
+
+        .resp-sharing-button--whatsapp:hover,
+        .resp-sharing-button--whatsapp:active {
+            background-color: #1DA851;
+            border-color: #1DA851;
+        }
+
+        .resp-sharing-button--telegram {
+            background-color: #54A9EB;
+        }
+
+        .resp-sharing-button--telegram:hover {
+            background-color: #4B97D1;
+        }
+    </style>
+    <!-- Header Scripts Starts -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = '../views/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
+    <!-- Header Scripts Ends -->
+    <title>What is Elastic beanstalk?</title>
+</head>
+
+<body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
+    <div data-include="header"></div>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto flex flex-col">
+            <div class="mx-auto">
+                <div class="rounded-lg h-64 overflow-hidden">
+                    <img alt="content" class="object-cover object-center h-full w-full"
+                        src="https://cdn.pixabay.com/photo/2017/01/22/22/11/cloud-computing-2001090_960_720.jpg">
+
+                </div>
+
+                <div class="flex flex-col sm:flex-row mt-10">
+                    <div
+                        class="sm:w-3/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-justify sm:text-left">
+                        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">What is Elastic beanstalk?
+                        </h1>
+                        <p class="leading-relaxed text-lg mb-4">
+
+                        <p>
+                            <li>Elastic Beanstalk handles the deployment, from capacity provisioning, load balancing, auto-scaling
+
+                                to application health monitoring
+                                
+                                <li>
+                                    When you want to run a web-application but you don't want to have think about the underlying
+                                    
+                                    infrastructure.
+                                </li>
+                                
+                                <li>It costs nothing to use Elastic Beanstalk (only the resources it provisions eg. RDS, ELB, EC2) </li>
+                                    <li>Recommended for test or development apps.</li> 
+                                    <li>Not recommended for production use</li>
+                                
+                                <li>
+                                    You can choose from the following preconfigured platforms: Java, .NET, PHP, Node.js, Python, Ruby,
+                                    
+                                    Go, and Docker
+                                </li>
+                                
+                                <li>You can run dockerized environments on Elastic Beanstalk.</li>
+
+                            </li>
+
+                        </p>
+                        
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
