@@ -8,33 +8,23 @@
   <link rel="stylesheet" href="CSS/responsive.css">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <title>Blog</title>
+        <!-- Header Scripts Starts -->
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <script>
+            $(function () {
+                var includes = $('[data-include]')
+                $.each(includes, function () {
+                    var file = '../views/' + $(this).data('include') + '.html'
+                    $(this).load(file)
+                })
+            })
+        </script>
+        <!-- Header Scripts Ends -->
 </head>
 
 <body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
   <!--For navigation bar-->
-  <nav class="navbar background navHeight-res">
-    <!--For navigation list-->
-    <ul class="left-nav visibileClass-res">
-      <!--For company logo-->
-      <div class="logo">
-        <img src="Images/KS.jpg" alt="KAUSTUBH SHARMA's Logo">
-      </div>
-      <li> <a href="/">Home </a></li>
-      <li> <a href="blog">Blog</a></li>
-      <li> <a href="quiz">Quiz</a></li>
-      <li> <a href="about">About </a></li>
-      <li> <a href="contact">Contact </a></li>
-    </ul>
-    <div class="right-nav visibileClass-res">
-      <!-- <input type="text" name="search" id="search">
-      <button class="btn btn-sm">Search</button>  -->
-    </div>
-    <div class="burger">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-  </nav>
+  <div data-include="test"></div>
   <!-- Blog Start -->
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">

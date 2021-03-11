@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
   <link rel="stylesheet" href="style.css">
-  <title>Responsive Navbar</title>
+  <title>KAUSTUBH SHARMA</title>
   <style>
     /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
 
@@ -26,7 +28,7 @@
     }
 
     header {
-      position: sticky;
+      position:fixed;
       font-family: 'Ubuntu', sans-serif;
       font-weight: bold;
       top: 0px;
@@ -34,19 +36,18 @@
       width: 100%;
       z-index: 1000;
     }
-
-    section {
-      position: relative;
+/* 
+    section1 {
+      position: sticky;
       width: 100%;
       background: url('bg.jpg') no-repeat top center / cover;
       overflow: hidden;
-    }
+    } */
 
     .container {
       max-width: 65rem;
-      padding: 0 2rem;
       margin: 0 auto;
-      display: flex;
+      /* display: flex; */
       position: relative;
     }
 
@@ -85,7 +86,7 @@
       font-weight: 300;
     }
 
-    .btn {
+    /* .btn {
       display: inline-block;
       padding: .5rem 1.3rem;
       font-size: .8rem;
@@ -95,7 +96,7 @@
       margin: 0 .2rem;
       transition: .3s;
       text-transform: uppercase;
-    }
+    } */
 
     .btn.solid,
     .btn.transparent:hover {
@@ -473,7 +474,10 @@
               <div class="dropdown">
                 <ul>
                   <li class="dropdown-link">
-                    <a href="../Quizzes/quiz1.html">AWS Quiz-1</a>
+                    <a href="/ASSOCIATE QUIZ">AWS Developer Associate</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="">AWS Solutions Architect Associate</a>
                   </li>
                   <!-- <li class="dropdown-link">
                                         <a href="#">Link 3<i class="fas fa-caret-down"></i></a>
@@ -533,7 +537,7 @@
       </div>
     </div>
   </header>
-
+  <script src="../JS/responsive.js"></script>
 </body>
 
 </html>

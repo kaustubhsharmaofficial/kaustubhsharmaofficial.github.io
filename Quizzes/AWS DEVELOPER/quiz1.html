@@ -593,9 +593,9 @@
 </head>
 
 <body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
-    <div data-include="header"></div>
+    <div data-include="test"></div>
 
-    <div id="header12">AWS Quiz-5
+    <div id="header12">AWS Quiz-1
 
         <div class="mode">
 
@@ -610,18 +610,19 @@
     <ol>
         <div id="start">
             <h2>
-                <li>A Developer is setting up a code update to Amazon ECS using AWS CodeDeploy. The Developer needs to
-                    complete the code update quickly. Which of the following deployment types should the Developer use?
+                <li>A Developer is trying to make API calls using AWS SDK. The IAM user credentials used by the
+                    application require multi-factor authentication for all API calls.
+                    Which method should the Developer use to access the multi-factor authentication protected API?
             </h2>
             <br />
             <input type="radio" id="Correct" name="question1">
-            <label for="Correct">A. Blue/green</label><br />
+            <label for="Correct">A. GetSessionToken</label><br />
             <input type="radio" name="question1">
-            <label>B. Linear</label><br />
+            <label>B. DecodeAuthorizationMessage</label><br />
             <input type="radio" name="question1">
-            <label>C. Canary</label> <br />
+            <label>C. GetCallerIdentity</label> <br />
             <input type="radio" name="question1">
-            <label>D. In-place</label>
+            <label>D. GetFederationToken</label>
             <BUTTON ONCLICK="ShowAndHide()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName" STYLE="display:none">
                 <table>
