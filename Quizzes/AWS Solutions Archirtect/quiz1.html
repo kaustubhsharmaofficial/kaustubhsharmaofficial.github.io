@@ -576,7 +576,7 @@
         $(function () {
             var includes = $('[data-include]')
             $.each(includes, function () {
-                var file = '../views/' + $(this).data('include') + '.html'
+                var file = '../../views/' + $(this).data('include') + '.html'
                 $(this).load(file)
             })
         })
@@ -586,9 +586,6 @@
     <meta name="image" property="og:image" content="Images\INFOSYS INTERVIEW FOR FRESHERS.jpg">
     <meta name="author" content="KAUSTUBH SHARMA">
     <meta property="og:type" content="AWS Questions & Answers with Explanation">
-
-
-
     <!-- Header Scripts Ends -->
 </head>
 
@@ -610,30 +607,36 @@
     <ol>
         <div id="start">
             <h2>
-                <li>A website uses web servers behind an Internet-facing Elastic Load Balancer. What record set should
-                    be created to point the customer’s DNS zone apex record at the ELB?
+                <li>A Developer is trying to make API calls using AWS SDK. The IAM user credentials used by the
+                    application require multi-factor authentication for all API calls.
+                    Which method should the Developer use to access the multi-factor authentication protected API?
             </h2>
             <br />
             <input type="radio" id="Correct" name="question1">
-            <label for="Correct">A. Create a PTR record pointing to the DNS name of the load balancer</label><br />
+            <label for="Correct">A. GetSessionToken</label><br />
             <input type="radio" name="question1">
-            <label>B. Create an A record that is an Alias, and select the ELB DNS as a target</label><br />
+            <label>B. DecodeAuthorizationMessage</label><br />
             <input type="radio" name="question1">
-            <label>C. Create a CNAME record that is an Alias, and select the ELB DNS as a target</label> <br />
+            <label>C. GetCallerIdentity</label> <br />
             <input type="radio" name="question1">
-            <label>D. Create an A record pointing to the DNS name of the load balancer</label>
+            <label>D. GetFederationToken</label>
             <BUTTON ONCLICK="ShowAndHide()" class="btn1">Short Tricks & Concepts behind Question & each option</BUTTON>
             <DIV ID="SectionName" STYLE="display:none">
                 <table>
                     <tr>
-                        <th style="background-color:red;">WHY A IS INCORRECT?</th>
-                        <td><b>CONCEPT: PTR record</b></td>
-                        <td colspan="2">PTR records are reverse lookup records where you use the IP to find the DNS name.
+                        <th style="background-color: green;">WHY A IS CORRECT?</th>
+                        <td><b>CONCEPT: GetSessionToken</b></td>
+                        <td colspan="2">The GetSessionToken API call returns a set of temporary credentials for an AWS
+                            account or IAM user. The credentials consist of an access key ID, a secret access key, and a
+                            security token. Generally, you use GetSessionToken if you want to use MFA to protect
+                            programmatic calls to specific AWS API operations
+                            Therefore, the Developer can use GetSessionToken with an MFA device to make secure API calls
+                            using the AWS SDK.
                         </td>
                     </tr>
                     <tr>
-                        <th style="background-color: green;">WHY B IS CORRECT?</th>
-                        <td><b>CONCEPT: A record that is an Alias, and select the ELB DNS as a target</b></td>
+                        <th style="background-color: red;">WHY B IS INCORRECT?</th>
+                        <td><b>CONCEPT: DecodeAuthorizationMessage</b></td>
                         <td colspan="2">
 
                             <b>DecodeAuthorizationMessage</b> decodes additional information about the authorization
@@ -641,7 +644,7 @@
                     </tr>
                     <tr>
                         <th style="background-color: red;">WHY C IS INCORRECT?</th>
-                        <td><b>CONCEPT: CNAME record</b></td>
+                        <td><b>CONCEPT: GetCallerIdentity</b></td>
                         <td colspan="2"><b>GetCallerIdentity</b> action returns details about the IAM user or role whose
                             credentials are used to call the operation.
 
@@ -652,7 +655,9 @@
                         <th style="background-color: red;">WHY D IS INCORRECT?</th>
                         <td><b>CONCEPT: GetFederationToken</b></td>
                         <td>
-                            <b>A CNAME record</b> can’t be used for resolving apex or naked domain names.
+                            <b>GetFederationToken</b> is used with federated users to return a set of temporary
+                            security
+                            credentials (consisting of an access key ID, a secret access key, and a security token).
                         </td>
                     </tr>
                     <tr>
@@ -668,7 +673,7 @@
                     <tr>
                         <th style="background-color:blueviolet;">References:</th>
                         <td colspan="3"> <a target="_blank"
-                                href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">AWS
+                                href="https://docs.aws.amazon.com/STS/latest/APIReference/API_GetSessionToken.html">AWS
                                 DOCS</a>
                         </td>
                     </tr>

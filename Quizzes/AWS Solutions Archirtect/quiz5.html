@@ -18,7 +18,7 @@
 
         .mode {
             padding-right: 30px;
-            margin-top: 12px;
+            margin-top: 7px;
             float: right;
 
         }
@@ -52,7 +52,7 @@
             justify-content: space-between;
             padding: 5px;
             position: relative;
-            height: 5px;
+            height: 15px;
             width: 28px;
             transform: scale(1.5);
         }
@@ -214,10 +214,10 @@
             font-size: 25px;
             /* Big font size */
             font-weight: bold;
-            position: sticky;
+            position: fixed;
             /* Fixed position - sit on top of the page */
             height: 80px;
-
+            padding-top: 50px;
             width: 100%;
             /* Full width */
             transition: 0.2s;
@@ -576,7 +576,7 @@
         $(function () {
             var includes = $('[data-include]')
             $.each(includes, function () {
-                var file = '../views/' + $(this).data('include') + '.html'
+                var file = '../../views/' + $(this).data('include') + '.html'
                 $(this).load(file)
             })
         })
@@ -594,7 +594,7 @@
 
 <body onkeypress="return disableCtrlKeyCombination(event);" onkeydown="return disableCtrlKeyCombination(event);">
     <div data-include="test"></div>
-
+<div>
     <div id="header12">AWS Quiz-5
 
         <div class="mode">
@@ -606,7 +606,7 @@
             </label>
         </div>
     </div>
-
+</div>
     <ol>
         <div id="start">
             <h2>
