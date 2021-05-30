@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Sharing button Css -->
+    <style type="text/css">
+        .resp-sharing-button__link,
+        .resp-sharing-button__icon {
+            display: inline-block
+        }
+
+        .resp-sharing-button__link {
+            text-decoration: none;
+            color: #fff;
+            margin: 0.5em
+        }
+
+        .resp-sharing-button {
+            border-radius: 5px;
+            transition: 25ms ease-out;
+            padding: 0.5em 0.75em;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+        }
+
+        .resp-sharing-button__icon svg {
+            width: 1em;
+            height: 1em;
+            margin-right: 0.4em;
+            vertical-align: top
+        }
+
+        .resp-sharing-button--small svg {
+            margin: 0;
+            vertical-align: middle
+        }
+
+        /* Non solid icons get a stroke */
+        .resp-sharing-button__icon {
+            stroke: #fff;
+            fill: none
+        }
+
+        /* Solid icons get a fill */
+        .resp-sharing-button__icon--solid,
+        .resp-sharing-button__icon--solidcircle {
+            fill: #fff;
+            stroke: none
+        }
+
+        .resp-sharing-button--twitter {
+            background-color: #55acee
+        }
+
+        .resp-sharing-button--twitter:hover {
+            background-color: #2795e9
+        }
+
+        .resp-sharing-button--pinterest {
+            background-color: #bd081c
+        }
+
+        .resp-sharing-button--pinterest:hover {
+            background-color: #8c0615
+        }
+
+        .resp-sharing-button--facebook {
+            background-color: #3b5998
+        }
+
+        .resp-sharing-button--facebook:hover {
+            background-color: #2d4373
+        }
+
+        .resp-sharing-button--tumblr {
+            background-color: #35465C
+        }
+
+        .resp-sharing-button--tumblr:hover {
+            background-color: #222d3c
+        }
+
+        .resp-sharing-button--reddit {
+            background-color: #5f99cf
+        }
+
+        .resp-sharing-button--reddit:hover {
+            background-color: #3a80c1
+        }
+
+        .resp-sharing-button--google {
+            background-color: #dd4b39
+        }
+
+        .resp-sharing-button--google:hover {
+            background-color: #c23321
+        }
+
+        .resp-sharing-button--linkedin {
+            background-color: #0077b5
+        }
+
+        .resp-sharing-button--linkedin:hover {
+            background-color: #046293
+        }
+
+        .resp-sharing-button--email {
+            background-color: #777
+        }
+
+        .resp-sharing-button--email:hover {
+            background-color: #5e5e5e
+        }
+
+        .resp-sharing-button--xing {
+            background-color: #1a7576
+        }
+
+        .resp-sharing-button--xing:hover {
+            background-color: #114c4c
+        }
+
+        .resp-sharing-button--whatsapp {
+            background-color: #25D366
+        }
+
+        .resp-sharing-button--whatsapp:hover {
+            background-color: #1da851
+        }
+
+        .resp-sharing-button--hackernews {
+            background-color: #FF6600
+        }
+
+        .resp-sharing-button--hackernews:hover,
+        .resp-sharing-button--hackernews:focus {
+            background-color: #FB6200
+        }
+
+        .resp-sharing-button--vk {
+            background-color: #507299
+        }
+
+        .resp-sharing-button--vk:hover {
+            background-color: #43648c
+        }
+
+        .resp-sharing-button--facebook {
+            background-color: #3b5998;
+            border-color: #3b5998;
+        }
+
+        .resp-sharing-button--facebook:hover,
+        .resp-sharing-button--facebook:active {
+            background-color: #2d4373;
+            border-color: #2d4373;
+        }
+
+        .resp-sharing-button--email {
+            background-color: #777777;
+            border-color: #777777;
+        }
+
+        .resp-sharing-button--email:hover,
+        .resp-sharing-button--email:active {
+            background-color: #5e5e5e;
+            border-color: #5e5e5e;
+        }
+
+        .resp-sharing-button--pinterest {
+            background-color: #bd081c;
+            border-color: #bd081c;
+        }
+
+        .resp-sharing-button--pinterest:hover,
+        .resp-sharing-button--pinterest:active {
+            background-color: #8c0615;
+            border-color: #8c0615;
+        }
+
+        .resp-sharing-button--linkedin {
+            background-color: #0077b5;
+            border-color: #0077b5;
+        }
+
+        .resp-sharing-button--linkedin:hover,
+        .resp-sharing-button--linkedin:active {
+            background-color: #046293;
+            border-color: #046293;
+        }
+
+        .resp-sharing-button--reddit {
+            background-color: #5f99cf;
+            border-color: #5f99cf;
+        }
+
+        .resp-sharing-button--reddit:hover,
+        .resp-sharing-button--reddit:active {
+            background-color: #3a80c1;
+            border-color: #3a80c1;
+        }
+
+        .resp-sharing-button--whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+        }
+
+        .resp-sharing-button--whatsapp:hover,
+        .resp-sharing-button--whatsapp:active {
+            background-color: #1DA851;
+            border-color: #1DA851;
+        }
+
+        .resp-sharing-button--telegram {
+            background-color: #54A9EB;
+        }
+
+        .resp-sharing-button--telegram:hover {
+            background-color: #4B97D1;
+        }
+    </style>
+    <!-- Header Scripts Starts -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = '../views/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
+    <!-- Header Scripts Ends -->
+    <title>Kubernetes Interview Questions</title>
+</head>
+
+<script type="text/javascript">
+    // start by getting all the questions and answers
+    // these will be put into arrays
+
+    var questions = document.getElementsByTagName('dt');
+    var answers = document.getElementsByTagName('dd');
+
+    // function for the link that turns them all off
+    function toggleAllOff() {
+        for (var i = 0; i < answers.length; i++) {
+            answers[i].className = 'hide';
+        };
+
+        var modifier = "";
+
+        for (var j = 0; j < questions.length; j++) {
+
+            var modifier = questions[j].innerHTML.slice(0, 2);
+
+            if (modifier == '- ') {
+                questions[j].innerHTML = '+ ' + questions[j].innerHTML.slice(2, questions[j].innerHTML.length);
+            }
+
+        };
+
+    }
+
+    // function for the link that turns them all on
+    function toggleAllOn() {
+        for (var i = 0; i < answers.length; i++) {
+            answers[i].className = 'show';
+        };
+
+        for (var j = 0; j < questions.length; j++) {
+
+            var modifier = questions[j].innerHTML.slice(0, 2);
+
+            if (modifier == '+ ') {
+                questions[j].innerHTML = '- ' + questions[j].innerHTML.slice(2, questions[j].innerHTML.length);
+            }
+        };
+
+    }
+
+
+    function toggleNext(el) {
+        var next = el.nextSibling;
+
+        next.style.display = ((next.style.display == "none") ? "block" : "none");
+    }
+
+
+    //makes the definition lists click-able
+    function displayToggle() {
+
+        toggleAllOff(); // calls the toggle all off function to turn all the answers off when the page is loaded
+
+        for (i = 0; i < questions.length; i++) { // loops through the questions a
+            questions[i].onclick = function () { // shows the answers onclick
+
+                var modifier = this.innerHTML.slice(0, 2);
+
+                if (modifier == '+ ') {
+                    this.innerHTML = '- ' + this.innerHTML.slice(2, this.innerHTML.length);
+                }
+                else {
+                    this.innerHTML = '+ ' + this.innerHTML.slice(2, this.innerHTML.length);
+                }
+
+                var next = this.nextSibling;
+                while (next.nodeType != 1) next = next.nextSibling; // if it gets to a non-element node, go to the next one
+                next.className = ((next.className == "hide") ? "show" : "hide");
+            }
+        }
+    }
+
+    //Hides mshelp links for Win10 OS
+    function hideMsHelpLinksForWin10() {
+        var isWin7OrWin8 = (navigator.appVersion.indexOf("Windows NT 6.1") >= 0 || navigator.appVersion.indexOf("Windows NT 6.2") >= 0 || navigator.appVersion.indexOf("Windows NT 6.3") >= 0);
+        if (!isWin7OrWin8) {
+            var seeAlso = document.getElementById('divSeeAlso');
+            if (seeAlso) {
+                seeAlso.style.display = "none";
+            }
+        }
+    }
+
+    //Format the FAQs so that the style is consistent with expanders in HPSA
+    function formatFAQs() {
+
+        var modifier = "";
+
+        for (var j = 0; j < questions.length; j++) {
+
+            var modifier = questions[j].innerHTML.slice(1, 3);
+
+            if (modifier == '- ') {
+                questions[j].innerHTML = '+ ' + questions[j].innerHTML.slice(3, questions[j].innerHTML.length);;
+            }
+            else {
+                if (modifier != '+ ') {
+                    questions[j].innerHTML = '+ ' + questions[j].innerHTML;
+                }
+            }
+
+            questions[j].style.fontWeight = "400";
+            questions[j].style.color = "#0096d6";
+            questions[j].style.textDecoration = "none";
+
+
+        };
+
+        var myElements = "";
+        if (document.querySelectorAll) {
+            myElements = document.querySelectorAll(".a_toggle");
+        }
+        else {
+            myElements = getElementsByClassName("a_toggle");
+        }
+
+        for (var i = 0; i < myElements.length; i++) {
+            myElements[i].style.display = "inline-block";
+        }
+
+    }
+
+    function getElementsByClassName(cl) {
+        var retnode = [];
+        var elem = document.getElementsByTagName('*');
+        for (var i = 0; i < elem.length; i++) {
+            if ((' ' + elem[i].className + ' ').indexOf(' ' + cl + ' ') > -1) retnode.push(elem[i]);
+        }
+        return retnode;
+    };
+
+    // initiates the click-able dt's when the page loads
+    window.onload = function () {
+        displayToggle();
+        hideMsHelpLinksForWin10();
+        formatFAQs();
+    }
+
+
+</script>
+
+<style type="text/css">
+    body {
+        font-family: 'HP Simplified', Verdana, Arial, Helvetica, sans-serif;
+        font-size: 100%;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #000000;
+        font-size: 1.6em;
+        width: 98%;
+    }
+
+    h3,
+    h4 {
+        color: #000000;
+        font-size: 1.2em;
+        padding-bottom: 20px;
+    }
+
+    a {
+        color: #0096d6;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .a_toggle {
+        color: #0096d6;
+        margin: 0px;
+        padding-left: 20px;
+        font-size: 0.8em;
+        font-weight: lighter;
+
+        display: none;
+    }
+
+    li {
+        padding: 2px 0 10px;
+    }
+
+    .li2 {
+        padding: 2px 0px 10px;
+        margin-left: 50px;
+        margin-right: 50px;
+        list-style-type: circle;
+    }
+
+    dl {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    dt {
+        font-weight: bold;
+        margin: 10px 20px 10px;
+        cursor: pointer;
+        color: #000000;
+    }
+
+    dd {
+        margin: 0px 70px 0px;
+        padding-bottom: 20px;
+        line-height: 100%;
+    }
+
+    p {
+        line-height: 150%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .margin20px {
+        margin-left: 20px;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+
+</head>
+
+<body onkeypress="return disableCtrlKeyCombination(event);">
+    <div data-include="test"></div>
+    <section class="text-gray-600 body-font overflow-hidden">
+
+        <h1 class="sm:text-4xl text-3xl font-medium title-font mt-12 text-gray-900 text-center">KUBERNETES INTERVIEW
+            QUESTIONS
+        </h1>
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap -m-4">
+
+                <div class="p-4  w-full">
+                    <div
+                        class="h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden">
+                        <button ONCLICK="ShowAndHide()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What is Kubernetes?
+                        </button>
+                        <DIV ID="SectionName" STYLE="display:none">
+                            Kubernetes is a container orchestration tool that is used for automating tasks of managing,
+                            monitoring, scaling & deploying containerized applications. It creates of conatiners that
+                            can be logically discovered & managed for easy operations on containers.
+                        </DIV>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 w-full">
+                    <div class="h-full p-6 rounded-lg border-2 border-indigo-500">
+                        <button ONCLICK="ShowAndHide2()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What is Container?
+                        </button>
+                        <DIV ID="SectionName2" STYLE="display:none">
+                            A container is a standard unit of software that packages up code and all its dependencies so
+                            the application runs quickly and reliably from one computing environment to another.
+                        </DIV>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 w-full">
+                    <div class="h-full p-6 rounded-lg border-2 border-indigo-500">
+                        <button ONCLICK="ShowAndHide3()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What are MicroServices?
+                        </button>
+                        <DIV ID="SectionName3" STYLE="display:none">
+                            Microservices - also known as the microservice architecture - is an architectural style that
+                            structures an application as a collection of services that are
+
+                            <li>Highly maintainable and testable</li>
+                            <li>Loosely coupled</li>
+                            <li>Independently deployable</li>
+                            <li>Organized around business capabilities</li>
+                            <li>Owned by a small team</li>
+                            The microservice architecture enables the rapid, frequent and reliable delivery of large,
+                            complex applications. It also enables an organization to evolve its technology stack.
+                        </DIV>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 w-full">
+                    <div class="h-full p-6 rounded-lg border-2 border-indigo-500">
+                        <button ONCLICK="ShowAndHide4()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What is Monolithic Architecture?
+                        </button>
+                        <DIV ID="SectionName4" STYLE="display:none">
+                            Monolith means composed all in one piece. The Monolithic application describes a
+                            single-tiered software application in which different components combined into a single
+                            program from a single platform.
+                        </DIV>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 w-full">
+                    <div class="h-full p-6 rounded-lg border-2 border-indigo-500">
+                        <button ONCLICK="ShowAndHide5()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What is the difference between Kubernetes and Docker Swarm?
+                        </button>
+                        <DIV ID="SectionName5" STYLE="display:none">
+                            Docker Swarm is a default container orchestration tool that comes with Docker. Docker Swarm
+                            can only orchestrate simple Docker containers. Kubernetes, on the other hand, helps manage
+                            much more complex software application containers. Kubernetes offers support for larger
+                            demand production environment.
+
+                            <li> Docker Swarm can't do autoscaling.</li>
+                            <li> Docker Swarm doesn't have a GUI.</li>
+                            <li> Docker Swarm can deploy rolling updates but can't deploy automatic rollbacks.</li>
+                            <li> Docker requires third party tools ike ELK(Elasticsearch, Logstash, and Kibana) stack
+                                for logging & monitoring, while Kubernetes has integrated tools for same.</li>
+                            <li> Docker Swarm can share storage volumes with any container easily, while Kubernetes can
+                                only share storages volumes with containers in the same pod.</li>
+                        </DIV>>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="p-4 w-full">
+                    <div class="h-full p-6 rounded-lg border-2 border-indigo-500">
+                        <button ONCLICK="ShowAndHide6()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What is a Heapster?
+                        </button>
+                        <DIV ID="SectionName6" STYLE="display:none">
+                            The Heapster lets us do the container cluster monitoring. It lets us do cluster-wide
+                            monitoring and event data aggregation. It has native support for Kubernetes.
+                        </DIV>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="p-4 w-full">
+                    <div class="h-full p-6 rounded-lg border-2 border-indigo-500">
+                        <button ONCLICK="ShowAndHide7()"
+                            class="flex items-center justify-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                            What is a Heapster?
+                        </button>
+                        <DIV ID="SectionName7" STYLE="display:none">
+                            To automate, 
+                            <li>We need to check in the application code into the code repository</li>
+                            <li>And then somehow we have to dockerize that application code</li>
+                            <li>create a container image </li>
+                            <li>and put that container image into a container image repository </li>
+                            <li>from there you have to deploy the container image</li>
+                            at a kubernetes cluster where the image
+                            will run as a container
+                            the first part is called the build and
+                            the next part is called deploy
+                            so keeping this in mind
+                            what you need to do is let's say
+                            you put your code in the git such as
+                            code repo as in github
+                            now you need to have a tool where you
+                            can run
+                            commands because if you think about it
+                            at the end of the day
+                            when you say you dockerize something all
+                            you are doing is running your docker
+                            file right so
+                            you need a tool that will allow you to
+                            run those commands
+                            after that you save the container image
+                            into the container image repository
+                            and for deployment again you need
+                            another tool
+                            to run commands so how do you deploy
+                            into kubernetes cluster
+                            so either you use a helm or you can use
+                            direct commands like cube ctl apply
+                            right
+                            so on the deploy phase as well you need
+                            a mechanism which will allow you to
+                            run this so if you transform these
+                            requirements into actual stack
+                            so how it would look like is a developer
+                            putting code into code repo such as git
+                            and then you need tools like either
+                            jenkins
+                            code build or gitlab which will allow
+                            you to dockerize it
+                            after you put it put the container image
+                            into the repository
+                            again you can use jenkins code build
+                            gitlab
+                            which will let you run helm commands or
+                            cube ctrl commands
+                            to deploy into kubernetes cluster so
+                            this is the high level flow
+                            if you understand this flow you can
+                            implement any kubernetes devops
+                            i have a separate video on eks how to
+                            implement
+                            a ci cd with eks uh so feel free to
+                            check that out
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+    </section>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('label').click(function () {
+                $('label').removeClass('worngans');
+                $(this).addClass('worngans');
+            });
+
+        });
+
+    </script>
+    <SCRIPT>
+        function ShowAndHide() {
+            var x = document.getElementById('SectionName');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide2() {
+            var x = document.getElementById('SectionName2');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide3() {
+            var x = document.getElementById('SectionName3');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide4() {
+            var x = document.getElementById('SectionName4');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide5() {
+            var x = document.getElementById('SectionName5');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide6() {
+            var x = document.getElementById('SectionName6');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide6() {
+            var x = document.getElementById('SectionName6');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide7() {
+            var x = document.getElementById('SectionName7');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide8() {
+            var x = document.getElementById('SectionName8');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide9() {
+            var x = document.getElementById('SectionName9');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        function ShowAndHide10() {
+            var x = document.getElementById('SectionName10');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </SCRIPT>
+    <script>
+        chk.addEventListener('change', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script>
+    <script>// Try using right-click on the preview page. This script disables that functionality.
+        window.addEventListener('contextmenu', function (e) {
+
+            e.preventDefault();
+        }, false);</script>
+
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright &copy; by KAUSTUBH SHARMA 2021 -All rights reserved
+        </p>
+    </footer>
+    <script src="../JS/responsive.js"></script>
+
+</body>
+
+</html>
