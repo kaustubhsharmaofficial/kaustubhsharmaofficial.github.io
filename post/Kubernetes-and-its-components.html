@@ -268,7 +268,7 @@
                                 machine, virtual machine, cloud & hybrid.</li>
 
                         </p>
-                        <p class="leading-relaxed text-lg mt-4" id="private">
+                        <p class="leading-relaxed text-lg mt-4">
                             <b>What do we need Kubenretes(container orchestration tool)?</b>
                             <li>As trend increases from Monlith to microservcies, it caused increased usage of container
                                 technologies because the containers actually offer the perfect host for small
@@ -291,19 +291,18 @@
                             <li>High Scalibility - High performance.</li>
                             <li>Disaster Recovery - Easy Backup & Restore.</li>
                         </p>
-                        <p class="leading-relaxed text-lg mt-4" id="private">
+                        <p class="leading-relaxed text-lg mt-4" id="Node">
                             <b>Components of Kubernetes</b>
-                            <li><b>Node</b> - Simple server, a physical or virtual machine</li>
-                            <li><b>Pod</b> - Basic component or smallest unit of kubernetes(K8s) <br>
-                            </li>
+                            <li><a href="#Node">Node</a></li>
+                            <li><a href="#Pod">Pod</a></li>
                         </p>
 
-                        <p class="leading-relaxed text-lg mt-4" id="private">
+                        <p class="leading-relaxed text-lg mt-4" id="Pod">
                             <b>What is Node?</b>
                             <li>Simple server, a physical or virtual machine on which containers are running.</li>
                         </p>
 
-                        <p class="leading-relaxed text-lg mt-4" id="private">
+                        <p class="leading-relaxed text-lg mt-4">
                             <b>What is Pod?</b>
                             <li>Basic component or smallest unit of kubernetes(K8s)</li>
                             <li>Abstraction (handle complexity by hiding unnecessary details from the user) layer over
@@ -327,23 +326,114 @@
                         <p class="leading-relaxed text-lg mt-4" id="private">
                             <b>As Pods are getting new IP everytime with creation, then how does these Pods are going to
                                 communicate?</b>
-                            <li>Here, Service comes in picture. Basically Service is a static IP Address, that can be
-                                attached to Pod.</li>
+                            <li>Here, Service comes in picture. Basically Service has a static IP Address with a DNS
+                                name, that can be
+                                attached to Pod. SERVICE also works as load balancer, we will discuss this later.</li>
                             <li>Lifecycle of Pods & Service are not connected. So even if Pod dies, & replaced by new
                                 Pod, it get new IP address, it still has same service through which they can
                                 communicate.</li>
-                            <li>Here, we talk about how Pods can communicate with each other internally, but We want our app to be accessible though browser, which we will see in next section.</li>
+                            <li>Here, we talk about how Pods can communicate with each other internally, but We want our
+                                app to be accessible though browser, which we will see in next section.</li>
                         </p>
 
                         <p class="leading-relaxed text-lg mt-4" id="private">
                             <b>How to access Our App though browser?</b>
-                            <li>Here, Service comes in picture. Basically Service is a static IP Address, that can be
-                                attached to Pod.</li>
-                            <li>Lifecycle of Pods & Service are not connected. So even if Pod dies, & replaced by new
-                                Pod, it get new IP address, it still has same service through which they can
-                                communicate.</li>
+                            <li>For this, we need to create an <i>External Service</i></li>
+                            <li> External service(http://ip-of-node:port-no-of-service) is a service that opens the
+                                communication from external sources</li>
+                            <li> But obviously you wouldn't want certain pods open to world like your database pods and
+                                for that you need to create an <i>Internal Service</i> which opens the communication
+                                from
+                                internal sources only, which you specify when creating one.</li>
+                            <li> But we want our URL don't like this (http://ip-of-node:port-no-of-service), we want our
+                                URL to look like https://my-app.com, which has secure protocol & domain name, which we
+                                can get using <i>Ingress</i>, which route raffic into cluster.</li>
                         </p>
 
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>SUMMARY</b>
+                            <li>We have servers(NODES) on which CONTAINERS are running. These containers have a abstract
+                                layer on them called PODS, which has static IPs called SERVICES, which are connected to
+                                INGRESS.</li>
+                            <center>OR</center>
+                            <li>Whenever any request comes, it first goes to INGRESS, which route it to SERVICE,
+                                which is connected to PODS, which are abstract layer on CONTAINERS running on
+                                servers (NODES).</li>
+                        </p>
+
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>Consider you make any changes in endpoint of SERVICE attached to Database Pod, but
+                                usually we define database URLs in built application, so do we need to rebuilt the
+                                application, push it to repository & pull it to pod & restart it ?? </b>
+                            <li>For ths very purpose, we use <i>CONFIGMAP</i> which is external configuration to your
+                                application</li>
+                            <li>Usually contain configuration data like URLs of a database or some other services.</li>
+                            <li>Connected to Pod so that pod actually gets the data that config map contains and now if
+                                you change the name of the service(endpoint of the service), you just adjust the
+                                config map.</li>
+                        </p>
+
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>But what if we make changes in username & password or certificates, can we store in
+                                ConfigMap which is
+                                plain text file ? </b>
+                            <li>For this, we use SECRET.</li>
+                            <li>Same as ConfigMap, but used to store secret data in base 64 encoded format.</li>
+                            <li>The built-in security mechanism is not enabled by default.</li>
+                            <li>ConfigMap & Secret data can be used as environment variable or even as properties file.
+                            </li>
+                        </p>
+
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>As on restarting Pod, data on Pod gone, so how can we persist the data? </b>
+                            <li>Yes, K8s doesn't manage data peristance.So, it our responsibility to backup, replicate &
+                                manage data.</li>
+                            <li>We can attach VOLUMES(physical storage on hard drive) to our pod.</li>
+                            <li>VOLUMES can be on local machine(Same NODE), or on a remote storage(outside of K8s
+                                cluster, may be on cloud, on-prem,etc.)</li>
+                        </p>
+
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>What if my application pod die due to restart/crash etc., how we are going to access
+                                application?</b>
+                            <li>We are replicating everything on multiple servers means we have multiple NODES, which
+                                have replica of our app pod & all replica app pods are connected to same SERVICE, which
+                                works a load balancer also means it forward the request to pod who is least busy.</li>
+                        </p>
+
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>How would we create replica of application pod?</b>
+                            <li>We would define blueprint for our application pod and specify how many replicas we
+                                want.That blueprint is called DEPLOYMENT.</li>
+                            <li>Also, in practice, we won't create any pod, we create DEPLOYMENT, because there you can
+                                specify how many replicas you want and you can also scale up or scale down based on
+                                the number of replicas of pods that you need. </li>
+                            <li>DEPLOYMENT is Abstraction layer over PODS, makes it more convenient to interact with the
+                                pods & replicate them and do some other configuration.</li>
+                            <li>Databases cannot be replicated using a deployment as DB has a state which
+                                is its data meaning that if we have
+                                clones or replicas of the database they
+                                would all need to
+                                access the same shared data storage
+                                and there you would need some kind of
+                                mechanism that manages
+                                which pods are currently writing to that
+                                storage
+                                or which pods are reading from the
+                                storage in order to
+                                avoid data inconsistencies & also to replicate the DBs, which is offered by STATEFULSET
+                            </li>
+                        </p>
+
+                        <p class="leading-relaxed text-lg mt-4" id="private">
+                            <b>STATEFULSET</b>
+                            <li>For Stateful apps like dbs, MySQl,MongoDB, ElasticSearch.</li>
+                            <li>No DBs inconsistencies</li>
+                            <li>But working with STATEFULSET is tedious, so generally DBs are deployed outside K8s
+                                cluster.</li>
+                            <li>Like DEPLOYMENT except DEPLOYMENT is for Stateless apps & STATEFULSET is for Stateful
+                                apps or DBs.</li>
+                        </p>
 
 
                         <br><br>
